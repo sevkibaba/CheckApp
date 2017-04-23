@@ -5,7 +5,7 @@ $.ajax({
 		var productList = JSON.parse(data);
 		window.productList = productList;
 		dataList(productList);
-		postOrder();
+		postOrder(); //this one is not necessary
 	}
 });
 

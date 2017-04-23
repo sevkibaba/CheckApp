@@ -71,11 +71,11 @@ class CheckController extends Controller {
 
 			]);
 
-		$product_post = $request->getParam('products');
-		echo "<pre>";
-		print_r($product_post);
-		die("</pre>");
-		$this->flash->addMessage('info', 'Check added!');
+		$product_post = $request->getParam('product');
+		// echo "<pre>";
+		// print_r($product_post);
+		// die("</pre>");
+		// $this->flash->addMessage('info', 'Check added!');
 
 		
 		return $response->withRedirect($this->router->pathFor('check.add'));
