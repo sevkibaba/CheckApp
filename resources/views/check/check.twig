@@ -1,0 +1,52 @@
+{% extends 'templates/app.twig' %}
+
+{% block content %}
+	<div class = "row" id='first-row'>
+
+		<div class = "col-md-6 col-md-offset-3">
+
+			<div class = "panel panel-default">
+
+				<div class = "panel-heading">l'addition</div>
+				<div class = "panel-body">
+
+					<form action = "{{path_for('check.add')}}" method = "post" autocomplete = "off">
+						<div class="row-appender">
+
+							<div class='row' id="addNamePrice">
+
+								<div class ="form-group col-md-4">
+
+									<label for = "productslist">Product</label>
+									<input list="productslist" class="form-control" id="select_product" name="product">
+									<datalist id="productslist" >
+										
+									</datalist>
+								
+								</div>
+
+							</div>
+						</div>
+						
+						<button type = "submit" class = "btn btn-default">Add Check</button>
+
+
+					</form>
+
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
+	<div class="row" id="second-row">
+		<table class="table table-bordered">
+
+
+
+		</table>
+	</div>
+
+{% endblock %}
+
