@@ -6,3 +6,12 @@ body {
 #add-button {
 	float: right;
 }
+
+td {
+	padding: 4px !important;
+}
+
+tr:nth-child(even) {
+	background-color: #f2f2f2
+}
+
