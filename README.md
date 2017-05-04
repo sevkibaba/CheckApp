@@ -40,7 +40,7 @@ PHP Admin:
     updated_at
 - Create Products table
     user_id
-    product_id
+    id
     name
     price
     created_at

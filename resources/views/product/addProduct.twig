@@ -16,7 +16,7 @@
 						<div class ="form-group{{ errors.email ? ' has-error' : "" }}">
 
 							<label for = "name">Product Name</label>
-							<input type="text" name="name" placeholder="Cortado" class="form-control">
+							<input type="text" name="name" id="name" value="" placeholder="Cortado" class="form-control">
 							<!-- {% if errors.email %}
 								<span class = "help-block">{{ errors.email | first }}</span>
 							{% endif %} -->
@@ -25,7 +25,7 @@
 						<div class ="form-group{{ errors.name ? ' has-error' : "" }}">
 
 							<label for = "price">Price</label>
-							<input type="number" name = "price" class = "form-control">
+							<input type="number" name = "price" id="price" class = "form-control">
 							<!-- {% if errors.name %}
 								<span class = "help-block">{{ errors.name | first }}</span>
 							{% endif %} -->
@@ -37,6 +37,12 @@
 
 					</form>
 
+					<button class="confirm">Confirm jQuery</button>
+
+					<table class="table table-bordered" id="dynamic_field">
+						
+					</table>
+
 				</div>
 
 			</div>
@@ -44,5 +50,96 @@
 		</div>
 
 	</div>
+
+<script type="text/javascript">
+
+
+loadData(function (data) {
+	
+	buttonsLoad(data);
+	listProducts(data);
+})
+
+
+// Selecting the row
+function buttonsLoad(productList) {
+	$(document).on('click', '.confirm', function(){
+
+		var focusedProduct = $(this).attr('id');
+
+		$.confirm({
+		    title: 'Are you sure to delete the product?',
+		    content: 'Simple confirm!',
+		    buttons: {
+
+		        confirm: function () {
+		        	window.location.href = "../product/delete/"+productList[focusedProduct].id;
+		        	$.alert('Product deleted?');
+
+		        },
+
+		        cancel: function () {
+		            $.alert('Canceled!');
+		        },
+
+		        // somethingElse: {
+		        //     text: 'Something else',
+		        //     btnClass: 'btn-blue',
+		        //     keys: ['enter', 'shift'],
+		        //     action: function(){
+		        //         $.alert('Something else?');
+		        //     }
+		        
+		        // }
+		    }
+		});
+
+	});
+
+	$(document).on('click', '.btn_remove', function(){
+
+
+
+		// ******ajax can't update the page hence I use a redirect strategy here*******
+		// $.ajax({
+		// 	url:'/product/delete/'+productList[focusedProduct].id,
+		//  	type:'GET',
+		// 	success: function(data) {
+		// 	}
+		// });
+	});
+
+
+	$(document).on('click', '.btn_update', function(){
+		
+		let focusedProduct = $(this).attr('id');
+		let fp = focusedProduct.slice(-1);
+		window.location.href = "../product/update/"+productList[fp].id;
+		
+		// window.location.href = "../product/update/"+productList[fp].id;
+
+
+
+	});
+
+};
+
+function listProducts(productList){
+
+for (i in productList){
+	$('#dynamic_field').append(`
+		
+		<tr id="row` + i + `">
+			<td>` + productList[i].name + "     " + productList[i].price + `</td>
+			<td><button name="update" id="update` + i + `" class="btn btn-success btn_update">Update</button></td>
+			<td><button name="delete" id="` + i + `" class="btn btn-danger btn_remove confirm">X</button></td>
+		</tr>
+
+		`);
+}
+
+};
+
+</script>
 
 {% endblock %}

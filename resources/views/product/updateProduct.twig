@@ -1,0 +1,93 @@
+{% extends 'templates/app.twig' %}
+
+{% block content %}
+
+	<div class = "row">
+
+		<div class = ".col-md-6 col-md-offset-3">
+
+			<div class = "panel panel-default">
+
+				<div class = "panel-heading">Update Product</div>
+				<div class = "panel-body">
+
+					<form action = "/product/update/{id}" method = "post" autocomplete = "off">
+
+						<div class ="form-group{{ errors.email ? ' has-error' : "" }}">
+
+							<label for = "ID">ID</label>
+							<input type="number" name="id" id="id" value="" placeholder="" class="form-control" readonly>
+							<!-- {% if errors.email %}
+								<span class = "help-block">{{ errors.email | first }}</span>
+							{% endif %} -->
+						</div>
+
+						<div class ="form-group{{ errors.email ? ' has-error' : "" }}">
+
+							<label for = "name">Product Name</label>
+							<input type="text" name="name" id="name" value="" placeholder="Cortado" class="form-control">
+							<!-- {% if errors.email %}
+								<span class = "help-block">{{ errors.email | first }}</span>
+							{% endif %} -->
+						</div>
+
+						<div class ="form-group{{ errors.name ? ' has-error' : "" }}">
+
+							<label for = "price">Price</label>
+							<input type="number" name = "price" id="price" class = "form-control">
+							<!-- {% if errors.name %}
+								<span class = "help-block">{{ errors.name | first }}</span>
+							{% endif %} -->
+						</div>
+
+						<button type = "submit" class = "label label-success">Update Product</button>
+						<a href="/product/addProduct"><span class="label label-primary">Add New Product</span></a>
+
+						{{ csrf.field | raw }}
+
+					</form>
+
+
+					<table class="table table-bordered" id="dynamic_field">
+						
+					</table>
+
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
+
+
+
+
+<script type="text/javascript">
+
+loadData(getInputValues);
+
+function getInputValues(productList){
+
+	var url = window.location.pathname;
+	parts = url.split('/');
+	var pathname = parts.pop();
+
+
+	for (var i = 0; i < productList.length; i++){
+
+		if(productList[i].id == [pathname]){
+
+			document.getElementById('id').value = productList[i].id;
+			document.getElementById('name').value = productList[i].name;
+			document.getElementById('price').value = productList[i].price;
+
+		}
+
+	}
+
+};
+
+</script>
+
+{% endblock %}

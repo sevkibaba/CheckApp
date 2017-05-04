@@ -22,10 +22,6 @@ class CheckController extends Controller {
 
 	}
 
-	public function getProducts() {
-		$products = Product::where('user_id', $_SESSION['user'])->get();
-		return json_encode($products);
-	}
 
 	public function postOrder(){
 
@@ -51,7 +47,7 @@ class CheckController extends Controller {
 		// $check = Check::create([
 
 		// 	'user_id' => $_SESSION['user'],
-		// 	'product_id' =>$request->getParam('products[0]["id"]'),
+		// 	'pid' =>$request->getParam('products[0]["id"]'),
 		// 	'product_name' =>$request->getParam('products[0]["name"]'),
 		// 	'product_price' =>$request->getParam('products[0]["price"]'),
 

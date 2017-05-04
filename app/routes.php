@@ -27,7 +27,15 @@ $app->group('', function (){
 
 	$this->get('/check', 'CheckController:getCheck')->setName('check.add');
 
-	$this->get('/product/list', 'CheckController:getProducts');
+	$this->get('/product/list', 'ProductController:getProducts');
+
+	$this->get('/product/delete/{id}', 'ProductController:deleteProduct');
+
+	$this->get('/product/update/{id}', 'ProductController:updateProductGet');
+
+	// $this->get('/product/update/ajax/{id}', 'ProductController:updateProductGet');
+
+	$this->post('/product/update/{id}', 'ProductController:updateProductPost')->setName('product.update');
 
 	$this->post('/order/post', 'CheckController:postOrder');
 	

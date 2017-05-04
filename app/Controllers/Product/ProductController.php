@@ -10,33 +10,14 @@ use Respect\Validation\Validator as v;
 
 class ProductController extends Controller {
 
-	public function getProductUpdate($request, $response){
+	public function getProducts($request, $response) {
 
-		// return $this->view->render($response, 'auth/signin.twig');
-
-	}
-
-	public function postProductUpdate($request, $response){
-
-		// $auth = $this->auth->attempt(
-		// 		$request->getParam('email'),
-		// 		$request->getParam('password')
-		// 	);
-
-
-		// if (!$auth){
-
-		// 	$this->flash->addMessage('error', 'Could not sign you in with those details.');
-
-		// 	return $response->withRedirect($this->router->pathFor('auth.signin'));
-		
-		// }
-		// return $response->withRedirect($this->router->pathFor('home'));
+		$products = Product::where('user_id', $_SESSION['user'])->get();
+		return json_encode($products);
+	
 	}
 
 	public function getAddProduct($request, $response) {
-
-		
 
 		return $this->view->render($response, 'product/addProduct.twig');
 
@@ -70,6 +51,49 @@ class ProductController extends Controller {
 		$this->flash->addMessage('info', 'Product added!');
 		
 
+		return $response->withRedirect($this->router->pathFor('product.add'));
+
+	}
+
+	public function updateProductGet($request, $response, $args){
+
+
+		return $this->view->render($response, 'product/updateProduct.twig');
+
+	}
+
+	// public function updateProductGet($request, $response, $args){
+
+	// 	$productToUpdate = Product::where('id', $args['id'])->get();
+	// 	return json_encode($productToUpdate);
+	// 	// return $this->view->render($response, 'auth/signin.twig');
+
+	// }
+
+	public function updateProductPost($request, $response, $args){
+
+		$requestID = $request->getParam('id');
+		$prdct = Product::where('id', $requestID)->first();
+		// print ($prdct);
+		// die();
+		$prdct->update([
+			'name' => $request->getParam('name'),
+			'price' => $request->getParam('price'),
+		 ]);
+		$prdct->save();
+
+		$this->flash->addMessage('info', 'Product updated!');
+
+		return $response->withRedirect($this->router->pathFor('product.add'));
+
+	}
+
+
+	public function deleteProduct ($request, $response, $args){
+		
+		Product::where('id', $args['id'])->delete();
+
+		$this->flash->addMessage('info', 'Product deleted!');
 
 		return $response->withRedirect($this->router->pathFor('product.add'));
 
