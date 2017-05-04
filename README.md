@@ -1,6 +1,6 @@
 # CheckApp
 This is an app that can collect sales information as checks, tracks inventory information and reports sales-inventory data
-
+Update
 You will need:
 - Composer (https://getcomposer.org/download/)
 - Xampp (https://www.apachefriends.org/tr/index.html)
