@@ -68,19 +68,26 @@ function buttonsLoad(productList) {
 		var focusedProduct = $(this).attr('id');
 
 		$.confirm({
-		    title: 'Are you sure to delete the product?',
-		    content: 'Simple confirm!',
+		    title: 'Delete Product',
+		    content: 'Are you sure to delete the product?',
 		    buttons: {
 
-		        confirm: function () {
-		        	window.location.href = "../product/delete/"+productList[focusedProduct].id;
-		        	$.alert('Product deleted?');
-
+		        confirm: {
+		        	btnClass: 'btn-success',
+		        	action: function () {
+		        		window.location.href = "../product/delete/"+productList[focusedProduct].id; 
+		        	},
+		        
 		        },
 
-		        cancel: function () {
-		            $.alert('Canceled!');
-		        },
+		        cancel: {
+		        	btnClass: 'btn-danger',
+		        	action: function () {
+		            	$.alert('Canceled!');
+		      		},
+		        }
+
+		        
 
 		        // somethingElse: {
 		        //     text: 'Something else',
@@ -95,20 +102,6 @@ function buttonsLoad(productList) {
 		});
 
 	});
-
-	$(document).on('click', '.btn_remove', function(){
-
-
-
-		// ******ajax can't update the page hence I use a redirect strategy here*******
-		// $.ajax({
-		// 	url:'/product/delete/'+productList[focusedProduct].id,
-		//  	type:'GET',
-		// 	success: function(data) {
-		// 	}
-		// });
-	});
-
 
 	$(document).on('click', '.btn_update', function(){
 		
