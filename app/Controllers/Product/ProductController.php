@@ -38,15 +38,14 @@ class ProductController extends Controller {
 
 
 		}
-
+		var_dump($request->getParam('price'));
 		$product = Product::create([
 
 			'user_id' => $_SESSION['user'],
 			'name' => $request->getParam('name'),
-			'price' => $request->getParam('price'),
-
+			'price' => $request->getParam('price')
 			]);
-
+	
 
 		$this->flash->addMessage('info', 'Product added!');
 		

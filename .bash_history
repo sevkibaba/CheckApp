@@ -25,3 +25,8 @@ git status
 git commit -m "cleared some code and started data table for check page"
 git push origin master
 git status
+git status
+git add .
+git status
+git commit -m "Proper Old input now sticks to input field after an error"
+git push origin master

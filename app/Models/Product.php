@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model{
 
 	protected $table = 'products'; //eloquate looks for the plural of the class name, you don't need to write this
-
 	protected $fillable = [
 
 		'user_id',
@@ -17,12 +16,21 @@ class Product extends Model{
 
 	];
 
-	public function setPrice($price){ //use this function to change the price of a product.
-
-		$this->update([
-				'price' => $price
-			]);
-
+	public function setPriceAttribute($price){ //This function allows us to store price information as integer.
+		$intPrice = (float)$price;
+		$intPrice = $intPrice*100;
+		$intPrice = (int)$intPrice; 
+		
+		$this->attributes['price'] = $intPrice;
 	}
+
+	
+	public function getPriceAttribute($price){ //Also, this function allows us to store price information as integer. 
+
+		$newPrice = $price/100; 
+		// var_dump($newPrice);
+		return $newPrice;
+	}
+
 
 }
