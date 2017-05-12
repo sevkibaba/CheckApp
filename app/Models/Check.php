@@ -11,10 +11,10 @@ class Check extends Model{
 	protected $fillable = [
 
 		'user_id',
-		'product_id',
-		'product_name',
-		'product_price',
-
+		'name',
+		'total',
+		'closed',
+		
 	];
 
 	// public function setPrice($price){ //use this function to change the price of a product.

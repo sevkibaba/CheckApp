@@ -4,7 +4,8 @@ function loadData (cb) {
 	 	type:'GET',
 		success: function(data) {
 			var productList = JSON.parse(data);
-			cb(productList);	
+			// console.log("alsana" + productList);	
+			cb(productList);
 		}
 	});
 }

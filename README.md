@@ -24,19 +24,21 @@ Special notes:
 PHP Admin:
 - Created a database called 'codecourse'. We will change it later, it is connected on the app.php under bootstrap folder, line 17.
 - Create checks table (
-    check_row_id
-    check_id
-    order_id
-    order_product_id
+    user_id
+    id
+    name
+    total
+    closed
     created_at
     updated_at
 - Create orders table
+    userid
     check_id
-    order_id
-    user_id
+    id
     product_id
     product_name
     product_price
+    item
     created_at
     updated_at
 - Create Products table
@@ -44,11 +46,6 @@ PHP Admin:
     id
     name
     price
-    created_at
-    updated_at
- - Create user checks
-    check_id
-    user_id
     created_at
     updated_at
  - Create users

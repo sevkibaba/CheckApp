@@ -10,11 +10,12 @@ class Order extends Model{
 
 	protected $fillable = [
 
-		'check_id',
 		'user_id',
+		'check_id',
 		'product_id',
 		'product_name',
 		'product_price',
+		'item'
 
 	];
 

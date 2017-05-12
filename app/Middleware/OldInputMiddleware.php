@@ -8,8 +8,9 @@ class OldInputMiddleware extends Middleware {
 
 		if (!isset($_SESSION['old'])){
 
-			$this->container->view->getEnvironment()->addGlobal('old', $_SESSION['old']);
 			$_SESSION['old'] = array();
+
+			$this->container->view->getEnvironment()->addGlobal('old', $_SESSION['old']);
 		
 		}else{
 			$this->container->view->getEnvironment()->addGlobal('old', $_SESSION['old']);

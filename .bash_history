@@ -30,3 +30,8 @@ git add .
 git status
 git commit -m "Proper Old input now sticks to input field after an error"
 git push origin master
+git status
+git add .
+git status
+git commit -m "Price is handled as integer in the database-Eloquent getter/setter added to convert price into integer by multiplying it with 100"
+git push origin master

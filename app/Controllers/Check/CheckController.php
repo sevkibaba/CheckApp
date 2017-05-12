@@ -6,7 +6,7 @@ use App\Controllers\Controller;
 use App\Models\User;
 use App\Models\Product;
 use App\Models\Check;
-use App\Models\Usercheck;
+use App\Models\Order;
 use App\Controllers\Auth;
 use Respect\Validation\Validator as v;
 
@@ -22,11 +22,6 @@ class CheckController extends Controller {
 
 	}
 
-
-	public function postOrder(){
-
-		echo 'Hello';
-	}
 
 	public function postCheck($request, $response) {
 
