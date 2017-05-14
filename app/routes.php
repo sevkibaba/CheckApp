@@ -33,12 +33,24 @@ $app->group('', function (){
 	$this->post('/product/update/{id}', 'ProductController:updateProductPost')->setName('product.update');
 
 
-	$this->get('/check', 'CheckController:getCheck')->setName('check.add');
 
+	$this->get('/check/createnewcheck', 'CheckController:newCheck'); //new check	
 
+	$this->get('/check', 'CheckController:controlCheck')->setName('check.add'); //new check
+
+	$this->get('/check/{id}', 'CheckController:getCheckId')->setName('check.id'); //new check	
 
 	
-	$this->post('/check', 'CheckController:postCheck');
+	// $this->post('/check', 'CheckController:postCheck');
+
+	$this->post('/check/addorder', 'CheckController:postSingleOrder');
+
+	$this->post('/check/{id}/updateName', 'CheckController:updateCheckName');
+
+	$this->post('/check/{id}/updateClosed', 'CheckController:updateCheckClosed');
+
+	$this->post('/check/{id}/updateTotal', 'CheckController:updateCheckTotal');
+
 
 
 	$this->get('/auth/password/change', 'PasswordController:getChangePassword')->setName('auth.password.change');

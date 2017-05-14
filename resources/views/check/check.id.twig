@@ -1,0 +1,296 @@
+{% extends 'templates/app.twig' %}
+
+{% block content %}
+
+	<div class = "row" id='first-row'>
+
+		<div class = "col-md-8 col-md-offset-3">
+
+			<div class = "panel panel-default">
+
+				<div class = "panel-heading">
+					<span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>
+					<input class="check-id" id="check-id" style="width:40px;" value= "{{ id }}" >
+					<span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
+					&nbsp &nbsp <b>L'addition</b>
+				</div>
+
+				<div class = "panel-heading">
+					<label for="check-name">Check Name</label>
+					<input class="check-name" id="check-name" value= "{{ name }}" >
+				</div>
+
+				<div class = "panel-body">
+
+<!-- 					<form action = "{{path_for('check.add')}}" method = "post" autocomplete = "off">
+ -->						
+						<div class="row-appender">
+
+							<div class='row' id="addNamePrice">
+
+								<div class ="form-group col-md-2" id="order-container">
+
+									<label for = "products">Product</label>
+									<input list="products" class="form-control" name="products" id="selected-product-id">
+									<datalist id="products" >
+										
+									</datalist>
+								
+								</div>
+
+							</div>
+						</div>
+						
+						<div class="panel-footer">
+							<button class = "btn btn-success" id="new-check">New Check</button>
+							<label for="total">Total</label>
+							<input type="number" class ="total" step="0.01" id="total" name="total" value="{{ total }}">
+							<label for="closed">Closed?</label>
+							
+							{% if closed == 1 %}
+							    {% set selected = true %}
+								<input type="checkbox" id="closed" name="closed" value="" {% if selected %}checked {% endif %}>
+							{% else %}
+								<input type="checkbox" id="closed" name="closed" value="" {% if selected %} unchecked {% endif %}>
+							{% endif %}
+
+						</div>
+
+
+<!-- 					</form>
+ -->
+				</div>
+			
+			</div>
+
+		</div>
+
+	</div>
+	<div class="row" id="second-row">
+		<table class="table table-bordered">
+			<div class="tabl-container">	
+				<table id="table_id" class="display">
+				    <thead>
+				        <tr>
+				            <th>Column 1</th>
+				            <th>Column 2</th>
+				        </tr>
+				    </thead>
+				    <tbody>
+				        <tr>
+				            <td>Row 1 Data 1</td>
+				            <td>Row 1 Data 2</td>
+				        </tr>
+				        <tr>
+				            <td>Row 2 Data 1</td>
+				            <td>Row 2 Data 2</td>
+				        </tr>
+				    </tbody>
+				</table>
+			</div>
+
+
+		</table>
+	</div>
+
+<script type="text/javascript">
+
+//Data table
+$(document).ready( function () {
+    $('#table_id').DataTable();
+} );
+
+$('#new-check').on('click', function(){
+	$.ajax({
+		url:'/check/createnewcheck',
+		type: 'GET',
+		success: function(data){
+			window.location.href = "../check";
+		},
+
+	});
+})
+
+//Order details
+loadData(dataList);
+loadData(addNP);
+
+function dataList(productList){
+
+	var innerElements = productList.map((product)=> {
+		return ' <option value="'+product.id+'">'+product.name+' </option>';
+	});
+	$('#products').html(innerElements.join(''))  ;
+
+};
+
+function addNP(productList){ 
+	$("[name='products']").on('input', function(){
+		var userText = $(this).val();
+
+		$("#products").find("option").each(function() {
+		  if ($(this).val() == userText) {
+
+			  	$("#addNamePrice").append(`
+
+			  		<div class ="form-group col-md-2" >
+
+			  			<label for = "pn">Name</label>
+			  			<input type="text" class="form-control" id="pn" name="pn" readonly>
+			  		
+			  		</div>
+
+			  		<div class ="form-group col-md-2" >
+
+			  			<label for = "pp">Price</label>
+			  			<input type="number" class="form-control" id="pp" name="pp" readonly>
+			  		
+			  		</div>
+
+			  		<div class ="form-group col-md-2" >
+
+			  			<label for = "quantity">Quantity</label>
+			  			<input type="number" class="form-control" id="quantity" name="quantity" >
+			  		
+			  		</div>
+
+			  		<div class ="form-group col-md-2" >
+			  			<div><label for="add-order">&nbsp &nbsp &nbsp;</label></div>
+			  			<button class="btn btn-success" id="add-order" >+</button>			  		
+
+			  		</div>
+			  		
+				`);
+
+			}
+		});
+
+		productList.forEach(function(currentValue){
+	  		if(currentValue.id === parseInt(userText)){
+	  			$("#pn").val(currentValue.name);
+	  			$("#pp").val(currentValue.price);
+	  		};
+		});
+
+	});
+
+};
+
+$('#addNamePrice').on('click', '#add-order', function(e){  //Since I add the button dynamically I had to use delegated event handler
+
+	var check_id = $('#check-id').val(); 
+	var selectedId = $('#selected-product-id').val(); 
+	var name = $('#pn').val(); 
+	var price = $('#pp').val(); 
+	var quantity = $('#quantity').val(); 
+
+	$.ajax({
+		url:'/check/addorder',
+	 	type:'POST',
+	 	data: {
+	 		'check_id' : check_id ,
+	 		'product_id' : selectedId,
+	 		'product_name' : name ,
+	 		'product_price' : price,
+	 		'quantity' : quantity,
+	 	},
+		success: function(data) {
+			
+			//Set total value
+			var checkTotal = $('#total').val();
+			checkTotal = +checkTotal + parseFloat(quantity)*parseFloat(price);
+			$('#total').attr('value', checkTotal);
+
+			//Clear product selection
+			$('#addNamePrice').empty();
+			$('#addNamePrice').append(`
+					<div class ="form-group col-md-2" id="order-container">
+
+						<label for = "products">Product</label>
+						<input list="products" class="form-control" name="products" id="selected-product-id">
+						<datalist id="products" >
+							
+						</datalist>
+					
+					</div>
+				`);
+
+			console.log(checkTotal + 'iki');
+
+			loadData(dataList);
+			loadData(addNP);
+
+			// Update total value in the check table
+			$.ajax({
+				url : '/check/' + $('#check-id').val() + '/updateTotal',
+				type: 'POST',
+				data : {
+					'total' : checkTotal,
+				},
+				success:function (data){
+
+				}
+			});
+
+		}
+	});
+
+	var toplam = $('#total').val();
+	console.log('bir ' + toplam);
+
+
+});
+
+// Send Check Name after focus out
+$('#check-name').focusout(function(){
+
+	$.ajax({
+		url:'/check/'+ $('#check-id').val() +'/updateName',
+		type: 'POST',
+		data:{
+			'check_name' : $('#check-name').val(),
+		},
+		success: function(data){
+
+		},
+
+	});
+});
+
+// Send closed parameter after click
+$('#closed').on('click', function(){
+	var val = $('#closed').val();
+
+	if (val == 0){
+
+		$('#closed').val('1');
+		$('#closed').prop('checked', true);		
+	}else{
+		$('#closed').val('0');		
+	}
+
+	$.ajax({
+		url:'/check/'+ $('#check-id').val() +'/updateClosed',
+		type: 'POST',
+		data:{
+			'closed' : $('#closed').val(),
+		},
+		success: function(data){
+
+		},
+
+	});
+});
+
+// Send Total parameter after value change
+$('#total').on('change', 'input', function(){
+	console.log('triggereds');
+	
+
+});
+
+
+</script>
+
+{% endblock %}
+

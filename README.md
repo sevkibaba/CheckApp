@@ -21,6 +21,8 @@ Special notes:
 
 - Database usernames and passwords are available in the app.php file, at lines 18 and 19.
 
+- Future Features: Stock Control, CRM (by collecting customer data)
+
 PHP Admin:
 - Created a database called 'codecourse'. We will change it later, it is connected on the app.php under bootstrap folder, line 17.
 - Create checks table (
@@ -38,7 +40,7 @@ PHP Admin:
     product_id
     product_name
     product_price
-    item
+    quantity
     created_at
     updated_at
 - Create Products table
