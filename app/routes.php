@@ -33,17 +33,15 @@ $app->group('', function (){
 	$this->post('/product/update/{id}', 'ProductController:updateProductPost')->setName('product.update');
 
 
+	$this->get('/check/list', 'CheckController:checkList'); 
 
 	$this->get('/check/createnewcheck', 'CheckController:newCheck'); //new check	
 
-	$this->get('/check', 'CheckController:controlCheck')->setName('check.add'); //new check
-
-	$this->get('/check/{id}', 'CheckController:getCheckId')->setName('check.id'); //new check	
-
-	
-	// $this->post('/check', 'CheckController:postCheck');
+	$this->get('/check', 'CheckController:controlCheck')->setName('check.add'); 
 
 	$this->post('/check/addorder', 'CheckController:postSingleOrder');
+
+	$this->get('/check/{id}', 'CheckController:getCheckId')->setName('check.id'); 
 
 	$this->post('/check/{id}/updateName', 'CheckController:updateCheckName');
 
@@ -51,6 +49,8 @@ $app->group('', function (){
 
 	$this->post('/check/{id}/updateTotal', 'CheckController:updateCheckTotal');
 
+
+	$this->get('/order/list/{id}', 'OrderController:orderList'); 
 
 
 	$this->get('/auth/password/change', 'PasswordController:getChangePassword')->setName('auth.password.change');

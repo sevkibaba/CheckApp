@@ -61,14 +61,6 @@ class ProductController extends Controller {
 
 	}
 
-	// public function updateProductGet($request, $response, $args){
-
-	// 	$productToUpdate = Product::where('id', $args['id'])->get();
-	// 	return json_encode($productToUpdate);
-	// 	// return $this->view->render($response, 'auth/signin.twig');
-
-	// }
-
 	public function updateProductPost($request, $response, $args){
 
 		$requestID = $request->getParam('id');

@@ -9,10 +9,10 @@
 			<div class = "panel panel-default">
 
 				<div class = "panel-heading">
-					<span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>
-					<input class="check-id" id="check-id" style="width:40px;" value= "{{ id }}" >
-					<span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
-					&nbsp &nbsp <b>L'addition</b>
+					<a id="a-back" href=""><span class="glyphicon glyphicon-arrow-left" id="back-arrow" aria-hidden="true"></span></a>
+					<input type="hidden" class="check-id" id="check-id" style="width:40px;" value= "{{ id }}" >
+					&nbsp &nbsp <b>L'addition</b>&nbsp &nbsp 
+					<a id="a-forward" href=""><span class="glyphicon glyphicon-arrow-right" id="forward-arrow" aria-hidden="true"></span></a>
 				</div>
 
 				<div class = "panel-heading">
@@ -31,7 +31,7 @@
 								<div class ="form-group col-md-2" id="order-container">
 
 									<label for = "products">Product</label>
-									<input list="products" class="form-control" name="products" id="selected-product-id">
+									<input list="products" class="form-control" name="products" id="selected-product-id" type="">
 									<datalist id="products" >
 										
 									</datalist>
@@ -56,6 +56,9 @@
 
 						</div>
 
+						<table class="table table-bordered" id="dynamic_field">
+							
+						</table>
 
 <!-- 					</form>
  -->
@@ -93,202 +96,15 @@
 		</table>
 	</div>
 
+<script src="/js/check.js"></script>
+<script src="/js/checkdatatable.js"></script>
+<script src="/js/checknavigationarrows.js"></script>
+<script src="/js/checkorderlist.js"></script>
+
 <script type="text/javascript">
-
-//Data table
-$(document).ready( function () {
-    $('#table_id').DataTable();
-} );
-
-$('#new-check').on('click', function(){
-	$.ajax({
-		url:'/check/createnewcheck',
-		type: 'GET',
-		success: function(data){
-			window.location.href = "../check";
-		},
-
-	});
-})
-
-//Order details
-loadData(dataList);
-loadData(addNP);
-
-function dataList(productList){
-
-	var innerElements = productList.map((product)=> {
-		return ' <option value="'+product.id+'">'+product.name+' </option>';
-	});
-	$('#products').html(innerElements.join(''))  ;
-
-};
-
-function addNP(productList){ 
-	$("[name='products']").on('input', function(){
-		var userText = $(this).val();
-
-		$("#products").find("option").each(function() {
-		  if ($(this).val() == userText) {
-
-			  	$("#addNamePrice").append(`
-
-			  		<div class ="form-group col-md-2" >
-
-			  			<label for = "pn">Name</label>
-			  			<input type="text" class="form-control" id="pn" name="pn" readonly>
-			  		
-			  		</div>
-
-			  		<div class ="form-group col-md-2" >
-
-			  			<label for = "pp">Price</label>
-			  			<input type="number" class="form-control" id="pp" name="pp" readonly>
-			  		
-			  		</div>
-
-			  		<div class ="form-group col-md-2" >
-
-			  			<label for = "quantity">Quantity</label>
-			  			<input type="number" class="form-control" id="quantity" name="quantity" >
-			  		
-			  		</div>
-
-			  		<div class ="form-group col-md-2" >
-			  			<div><label for="add-order">&nbsp &nbsp &nbsp;</label></div>
-			  			<button class="btn btn-success" id="add-order" >+</button>			  		
-
-			  		</div>
-			  		
-				`);
-
-			}
-		});
-
-		productList.forEach(function(currentValue){
-	  		if(currentValue.id === parseInt(userText)){
-	  			$("#pn").val(currentValue.name);
-	  			$("#pp").val(currentValue.price);
-	  		};
-		});
-
-	});
-
-};
-
-$('#addNamePrice').on('click', '#add-order', function(e){  //Since I add the button dynamically I had to use delegated event handler
-
-	var check_id = $('#check-id').val(); 
-	var selectedId = $('#selected-product-id').val(); 
-	var name = $('#pn').val(); 
-	var price = $('#pp').val(); 
-	var quantity = $('#quantity').val(); 
-
-	$.ajax({
-		url:'/check/addorder',
-	 	type:'POST',
-	 	data: {
-	 		'check_id' : check_id ,
-	 		'product_id' : selectedId,
-	 		'product_name' : name ,
-	 		'product_price' : price,
-	 		'quantity' : quantity,
-	 	},
-		success: function(data) {
-			
-			//Set total value
-			var checkTotal = $('#total').val();
-			checkTotal = +checkTotal + parseFloat(quantity)*parseFloat(price);
-			$('#total').attr('value', checkTotal);
-
-			//Clear product selection
-			$('#addNamePrice').empty();
-			$('#addNamePrice').append(`
-					<div class ="form-group col-md-2" id="order-container">
-
-						<label for = "products">Product</label>
-						<input list="products" class="form-control" name="products" id="selected-product-id">
-						<datalist id="products" >
-							
-						</datalist>
-					
-					</div>
-				`);
-
-			console.log(checkTotal + 'iki');
-
-			loadData(dataList);
-			loadData(addNP);
-
-			// Update total value in the check table
-			$.ajax({
-				url : '/check/' + $('#check-id').val() + '/updateTotal',
-				type: 'POST',
-				data : {
-					'total' : checkTotal,
-				},
-				success:function (data){
-
-				}
-			});
-
-		}
-	});
-
-	var toplam = $('#total').val();
-	console.log('bir ' + toplam);
-
-
-});
-
-// Send Check Name after focus out
-$('#check-name').focusout(function(){
-
-	$.ajax({
-		url:'/check/'+ $('#check-id').val() +'/updateName',
-		type: 'POST',
-		data:{
-			'check_name' : $('#check-name').val(),
-		},
-		success: function(data){
-
-		},
-
-	});
-});
-
-// Send closed parameter after click
-$('#closed').on('click', function(){
-	var val = $('#closed').val();
-
-	if (val == 0){
-
-		$('#closed').val('1');
-		$('#closed').prop('checked', true);		
-	}else{
-		$('#closed').val('0');		
-	}
-
-	$.ajax({
-		url:'/check/'+ $('#check-id').val() +'/updateClosed',
-		type: 'POST',
-		data:{
-			'closed' : $('#closed').val(),
-		},
-		success: function(data){
-
-		},
-
-	});
-});
-
-// Send Total parameter after value change
-$('#total').on('change', 'input', function(){
-	console.log('triggereds');
-	
-
-});
-
+addNamePrice();
+sendCheckName();
+sendClosedParameter();
 
 </script>
 

@@ -13,6 +13,10 @@ use Respect\Validation\Validator as v;
 
 class CheckController extends Controller {
 
+	public function checkList () {
+		$allChecks = Check :: where('user_id', $_SESSION['user'])->get();
+		return json_encode($allChecks);
+	}
 
 	public function controlCheck($request, $response) {
 
@@ -28,19 +32,23 @@ class CheckController extends Controller {
 			return $response->withRedirect('/check/'. $newCheck['id']);
 
 		}else{
+			$user = $_SESSION['user'];
+			$lastCheck = Check :: where('user_id', $_SESSION['user'])->get()->toArray();
 
-			$lastCheck = Check :: whereRaw('id = (select max(`id`) from checks)')->get();
-			$checkIdForUrl = $lastCheck->toArray();
+			$checkIdForUrl = max($lastCheck);
+			$key = array_search($checkIdForUrl, $lastCheck);
 
-			return $response->withRedirect('/check/'. $checkIdForUrl[0]['id']);
+			return $response->withRedirect('/check/'. $lastCheck[$key]['id']);
 
 		}
 
 	}
 
-	public function getCheckId($request, $response, $args){
+	public function getCheckId($request, $response, $args){	//returns empty array if the user and check id doesn' match
 		
-		$checkInfo = Check :: where('id', $args['id'])->get()->toArray()[0];
+		$checkInfo = Check :: where('id', $args['id'])
+		->where('user_id', $_SESSION['user'])
+		->get()->toArray()[0];
 
 		return $this->view->render($response, 'check/check.id.twig', $checkInfo);
 		

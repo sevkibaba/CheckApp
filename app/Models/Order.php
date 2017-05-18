@@ -19,12 +19,4 @@ class Order extends Model{
 
 	];
 
-	// public function setPrice($price){ //use this function to change the price of a product.
-
-	// 	$this->update([
-	// 			'price' => $price
-	// 		]);
-
-	// }
-
 }

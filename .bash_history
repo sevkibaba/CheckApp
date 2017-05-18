@@ -35,3 +35,9 @@ git add .
 git status
 git commit -m "Price is handled as integer in the database-Eloquent getter/setter added to convert price into integer by multiplying it with 100"
 git push origin master
+git status
+git add .
+git status
+git commit -m "Check page back-end added, navigation arrows are missing"
+git push origin master
+git status
