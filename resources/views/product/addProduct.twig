@@ -44,15 +44,15 @@
 
 				</div>
 
+
+
+
 			</div>
 
 		</div>
 
 	</div>
-
 <script type="text/javascript">
-
-
 loadProductsData(function (data) {
 	
 	buttonsLoad(data);
@@ -63,20 +63,17 @@ loadProductsData(function (data) {
 // Selecting the row
 function buttonsLoad(productList) {
 	$(document).on('click', '.confirm', function(){
-
 		var focusedProduct = $(this).attr('id');
 
 		$.confirm({
 		    title: 'Delete Product',
 		    content: 'Are you sure to delete the product?',
 		    buttons: {
-
 		        confirm: {
 		        	btnClass: 'btn-success',
 		        	action: function () {
 		        		window.location.href = "../product/delete/"+productList[focusedProduct].id; 
 		        	},
-		        
 		        },
 
 		        cancel: {
@@ -85,51 +82,29 @@ function buttonsLoad(productList) {
 		            	$.alert('Canceled!');
 		      		},
 		        }
-
-		        
-
-		        // somethingElse: {
-		        //     text: 'Something else',
-		        //     btnClass: 'btn-blue',
-		        //     keys: ['enter', 'shift'],
-		        //     action: function(){
-		        //         $.alert('Something else?');
-		        //     }
-		        
-		        // }
 		    }
 		});
 
 	});
 
 	$(document).on('click', '.btn_update', function(){
-		
 		let focusedProduct = $(this).attr('id');
 		let fp = focusedProduct.slice(-1);
 		window.location.href = "../product/update/"+productList[fp].id;
-		
-		// window.location.href = "../product/update/"+productList[fp].id;
-
-
-
 	});
 
 };
 
 function listProducts(productList){
-
-for (i in productList){
-	$('#dynamic_field').append(`
-		
-		<tr id="row` + i + `">
-			<td>` + productList[i].name + "     " + productList[i].price + `</td>
-			<td><button name="update" id="update` + i + `" class="btn btn-success btn_update">Update</button></td>
-			<td><button name="delete" id="` + i + `" class="btn btn-danger btn_remove confirm">X</button></td>
-		</tr>
-
-		`);
-}
-
+	for (i in productList){
+		$('#dynamic_field').append(`
+			<tr id="row` + i + `">
+				<td>` + productList[i].name + "     " + productList[i].price + `</td>
+				<td><button name="update" id="update` + i + `" class="btn btn-success btn_update">Update</button></td>
+				<td><button name="delete" id="` + i + `" class="btn btn-danger btn_remove confirm">X</button></td>
+			</tr>
+			`);
+	}
 };
 
 </script>

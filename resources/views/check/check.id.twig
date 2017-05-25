@@ -13,12 +13,12 @@
 					<input type="hidden" class="check-id" id="check-id" style="width:40px;" value= "{{ id }}" >
 					&nbsp &nbsp <b>L'addition</b>&nbsp &nbsp 
 					<a id="a-forward" href=""><span class="glyphicon glyphicon-arrow-right" id="forward-arrow" aria-hidden="true"></span></a>
+					<div class = "panel-heading" id="check-name-container">
+						<label for="check-name">Check Name</label>
+						<input class="check-name" id="check-name" value= "{{ name }}" >
+					</div>
 				</div>
 
-				<div class = "panel-heading">
-					<label for="check-name">Check Name</label>
-					<input class="check-name" id="check-name" value= "{{ name }}" >
-				</div>
 
 				<div class = "panel-body">
 
@@ -44,7 +44,7 @@
 						<div class="panel-footer">
 							<button class = "btn btn-success" id="new-check">New Check</button>
 							<label for="total">Total</label>
-							<input type="number" class ="total" step="0.01" id="total" name="total" value="{{ total }}">
+							<input type="text" class ="total" step="0.01" id="total" name="total" value="{{ total|number_format(2) }}">
 							<label for="closed">Closed?</label>
 							
 							{% if closed == 1 %}
@@ -75,20 +75,24 @@
 				<table id="table_id" class="display">
 				    <thead>
 				        <tr>
-				            <th>Column 1</th>
-				            <th>Column 2</th>
+				            <th>Check Id</th>
+				            <th>Order Id</th>
+				            <th>Prodcut</th>
+				            <th>Price</th>
+				            <th>Quantity</th>
 				        </tr>
 				    </thead>
-				    <tbody>
-				        <tr>
-				            <td>Row 1 Data 1</td>
-				            <td>Row 1 Data 2</td>
-				        </tr>
-				        <tr>
-				            <td>Row 2 Data 1</td>
-				            <td>Row 2 Data 2</td>
-				        </tr>
+				    <tbody>				        
 				    </tbody>
+				    <tfoot>
+				        <tr>
+				            <th>Check Id</th>
+				            <th>Order Id</th>
+				            <th>Prodcut</th>
+				            <th>Price</th>
+				            <th>Quantity</th>
+				        </tr>
+				    </tfoot>
 				</table>
 			</div>
 

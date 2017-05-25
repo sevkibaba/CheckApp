@@ -50,7 +50,11 @@ $app->group('', function (){
 	$this->post('/check/{id}/updateTotal', 'CheckController:updateCheckTotal');
 
 
+	$this->get('/order/list', 'OrderController:allOrders'); 
+
 	$this->get('/order/list/{id}', 'OrderController:orderList'); 
+
+	$this->get('/order/{id}/delete/{checkId}', 'OrderController:deleteOrder'); 
 
 
 	$this->get('/auth/password/change', 'PasswordController:getChangePassword')->setName('auth.password.change');

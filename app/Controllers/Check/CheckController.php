@@ -54,7 +54,7 @@ class CheckController extends Controller {
 		
 	}
 
-	public function postSingleOrder($request, $response) {
+	public function postSingleOrder($request, $response, $args) {
 
 		$singleOrder = Order::create([
 
@@ -66,6 +66,10 @@ class CheckController extends Controller {
 				'quantity' => $request->getParam('quantity'),
 
 			]);
+
+		// return $response->withRedirect('/');
+
+
 
 	}
 
@@ -88,12 +92,12 @@ class CheckController extends Controller {
 	public function updateCheckTotal($request, $response, $args){
 
 		$updatedTotal = $request->getParam('total');
-		
-		// $updatedTotal = (float)$updatedTotal;
+
 		$check = Check::where('id', $args['id']);
 		$check->update([
 				'total' => $updatedTotal,
 			]);
+
 	}
 
 	public function newCheck ($request, $response, $args){

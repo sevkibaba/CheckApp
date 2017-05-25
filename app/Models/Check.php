@@ -17,4 +17,23 @@ class Check extends Model{
 		
 	];
 
+
+
+	// public function setTotalAttribute($total){ //This function allows us to store price information as integer.
+
+	// 	$intTotal = $total + 10;
+	// 	// $intTotal = $total*100;
+	// 	// $intTotal = (int)$intTotal; 
+		
+	// 	$this->attributes['total'] = $intTotal;
+	// }
+
+	
+	// public function getTotalAttribute($total){ //Also, this function allows us to store price information as integer. 
+
+	// 	$newTotal = $total/100; 
+	// 	return $newTotal;
+	// }
+
+
 }
