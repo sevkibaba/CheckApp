@@ -2,7 +2,6 @@ loadOrdersData(deleteOrder);
 loadOrdersData(listOrders);
 
 function listOrders(orderList){
-	console.log(orderList);
 	for (i in orderList){
 		$('#dynamic_field').append(`			
 			<tr id="row` + i + `">
@@ -18,7 +17,6 @@ function listOrders(orderList){
 function deleteOrder(orderList){
 	$(document).on('click','.confirm', function(){
 		var focusedOrder = $(this).attr('id');
-		console.log('eee');
 		        		
 		$.confirm({
 		    title: 'Delete Order',

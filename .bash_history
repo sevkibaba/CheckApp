@@ -41,3 +41,7 @@ git status
 git commit -m "Check page back-end added, navigation arrows are missing"
 git push origin master
 git status
+git status
+git add .
+git commit -m "Total value bug resolved, however, we need to store the total value as float. Getter/ Setter don't work with ajax post request"
+git push origin master

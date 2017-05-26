@@ -97,7 +97,6 @@ function addNamePrice (){
 				//Set total value
 				var checkTotal = $('#total').val();
 				checkTotal = +checkTotal + (+quantity*+price);
-				console.log(checkTotal + typeof(checkTotal));
 				$('#total').attr('value', checkTotal);
 				callUpdateTotal(checkTotal);
 

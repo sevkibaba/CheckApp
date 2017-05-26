@@ -16,24 +16,8 @@ class OrderController extends Controller {
 	public function allOrders($request, $response, $args) {
 		$allOrders = Order :: where('user_id', $_SESSION['user'])
 		->get();
-		$encodedAllOrders = json_encode($allOrders);
-		$ordersToSend=array();
 
-		// $ordersToSend = array(['check_id' => $encodedAllOrders['check_id'], 'id' => 'id']); //Example Array
-
-		// echo "<pre>";
-		// print_r($ordersToSend);
-		// die("</pre>");
-		$recordsTotal = count($allOrders);
-		$json[] = (object) array(
-		'draw'=> 1,
-		'recordsTotal'=> $recordsTotal,
-		'recordsFiltered'=> $recordsTotal,
-		'data'=> $encodedAllOrders,
-
-		);
-		// return $encodedAllOrders;
-		return json_encode($json);
+		return json_encode($allOrders);
 	}
 	
 // gets the orders of a check, if the user and check doen't match,returns empty array. 
