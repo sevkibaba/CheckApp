@@ -45,3 +45,8 @@ git status
 git add .
 git commit -m "Total value bug resolved, however, we need to store the total value as float. Getter/ Setter don't work with ajax post request"
 git push origin master
+git status
+git add .
+git status
+git commit -m "Data table is working"
+git push origin master

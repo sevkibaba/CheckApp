@@ -2,103 +2,125 @@
 
 {% block content %}
 
-	<div class = "row" id='first-row'>
+	<ul class="nav nav-tabs">
+	   <li class="active"><a data-toggle="tab" href="#home">Current Check</a></li>
+	   <li><a data-toggle="tab" href="#menu1">Checks Table</a></li>
 
-		<div class = "col-md-8 col-md-offset-3">
+	 </ul>
 
-			<div class = "panel panel-default">
+	 <div class="tab-content">
+	   <div id="home" class="tab-pane fade in active">
+	     	<div class = "row" id='first-row'>
 
-				<div class = "panel-heading">
-					<a id="a-back" href=""><span class="glyphicon glyphicon-arrow-left" id="back-arrow" aria-hidden="true"></span></a>
-					<input type="hidden" class="check-id" id="check-id" style="width:40px;" value= "{{ id }}" >
-					&nbsp &nbsp <b>L'addition</b>&nbsp &nbsp 
-					<a id="a-forward" href=""><span class="glyphicon glyphicon-arrow-right" id="forward-arrow" aria-hidden="true"></span></a>
-					<div class = "panel-heading" id="check-name-container">
-						<label for="check-name">Check Name</label>
-						<input class="check-name" id="check-name" value= "{{ name }}" >
-					</div>
-				</div>
+	     		<div class = "col-md-8 col-md-offset-0">
 
+	     			<div class = "panel panel-default">
 
-				<div class = "panel-body">
+	     				<div class = "panel-heading" id="check-name-container">
+	     					<label for="check-name">Check Name</label>
+	     					<input class="form-control" id="check-name" value= "{{ name }}" placeholder="You should enter a check name such as customer name">
+	     				</div>
 
-<!-- 					<form action = "{{path_for('check.add')}}" method = "post" autocomplete = "off">
- -->						
-						<div class="row-appender">
-
-							<div class='row' id="addNamePrice">
-
-								<div class ="form-group col-md-2" id="order-container">
-
-									<label for = "products">Product</label>
-									<input list="products" class="form-control" name="products" id="selected-product-id" type="">
-									<datalist id="products" >
-										
-									</datalist>
-								
-								</div>
-
-							</div>
-						</div>
-						
-						<div class="panel-footer">
-							<button class = "btn btn-success" id="new-check">New Check</button>
-							<label for="total">Total</label>
-							<input type="text" class ="total" step="0.01" id="total" name="total" value="{{ total|number_format(2) }}">
-							<label for="closed">Closed?</label>
-							
-							{% if closed == 1 %}
-							    {% set selected = true %}
-								<input type="checkbox" id="closed" name="closed" value="" {% if selected %}checked {% endif %}>
-							{% else %}
-								<input type="checkbox" id="closed" name="closed" value="" {% if selected %} unchecked {% endif %}>
-							{% endif %}
-
-						</div>
-
-						<table class="table table-bordered" id="dynamic_field">
-							
-						</table>
-
-<!-- 					</form>
- -->
-				</div>
-			
-			</div>
-
-		</div>
-
-	</div>
-	<div class="row" id="second-row">
-		<table class="table table-bordered">
-			<div class="tabl-container">	
-				<table id="table_id" class="display">
-				    <thead>
-				        <tr>
-				            <th>Check Id</th>
-				            <th>Order Id</th>
-				            <th>Prodcut</th>
-				            <th>Price</th>
-				            <th>Quantity</th>
-				        </tr>
-				    </thead>
-				    <tbody>				        
-				    </tbody>
-				    <tfoot>
-				        <tr>
-				            <th>Check Id</th>
-				            <th>Order Id</th>
-				            <th>Prodcut</th>
-				            <th>Price</th>
-				            <th>Quantity</th>
-				        </tr>
-				    </tfoot>
-				</table>
-			</div>
+	     				<div class = "panel-heading">
+	     					<a id="a-back" href=""><span class="glyphicon glyphicon-arrow-left" id="back-arrow" aria-hidden="true"></span></a>
+	     					<input type="hidden" class="check-id" id="check-id" style="width:40px;" value= "{{ id }}" >
+	     					&nbsp &nbsp <b>L'addition</b>&nbsp &nbsp 
+	     					<a id="a-forward" href=""><span class="glyphicon glyphicon-arrow-right" id="forward-arrow" aria-hidden="true"></span></a>
+	     				</div>
 
 
-		</table>
-	</div>
+	     				<div class = "panel-body">
+
+	     <!-- 					<form action = "{{path_for('check.add')}}" method = "post" autocomplete = "off">
+	      -->						
+	     						<div class="row-appender">
+
+	     							<div class='row' id="addNamePrice">
+
+	     								<div class ="form-group col-md-12" id="order-container">
+
+	     									<label for = "products">Product</label>
+	     									<input list="products" class="form-control form-group-lg input-lg" name="products" id="selected-product-id" type="" placeholder="Espresso">
+	     									<datalist id="products" >
+	     										
+	     									</datalist>
+	     								
+	     								</div>
+
+	     							</div>
+	     						</div>
+	     						
+	     						<div class="panel-footer">
+	     							<label for="total">Calculated <br> Total</label>
+	     							<input type="text" class ="total " step="0.01" id="total" name="total" value="{{ total|number_format(2) }}">
+
+	     						</div>
+
+	     						<table class="table table-bordered" id="dynamic_field">
+	     							
+	     						</table>
+
+	     						<button class = "btn btn-success" id="new-check">New Check</button>
+	     						<span class="button-container">
+	     							<label for="closed">Closed?</label>
+	     							
+	     							{% if closed == 1 %}
+	     							    {% set selected = true %}
+	     								<input type="checkbox" id="closed" name="closed" value="" {% if selected %}checked {% endif %}>
+	     							{% else %}
+	     								<input type="checkbox" id="closed" name="closed" value="" {% if selected %} unchecked {% endif %}>
+	     							{% endif %}
+
+	     						</span>
+
+	     <!-- 					</form>
+	      -->
+	     				</div>
+	     			
+	     			</div>
+
+	     		</div>
+
+	     	</div>
+
+	   </div>
+	   
+	   <div id="menu1" class="tab-pane fade">
+	   	<div class="row" id="second-row">
+	   		<table class="table table-bordered">
+	   			<div class="tabl-container">	
+	   				<table id="table_id" class="display">
+	   				    <thead>
+	   				        <tr>
+	   				            <th>Check Id</th>
+	   				            <th>Order Id</th>
+	   				            <th>Prodcut</th>
+	   				            <th>Price</th>
+	   				            <th>Quantity</th>
+	   				        </tr>
+	   				    </thead>
+	   				    <tbody>				        
+	   				    </tbody>
+	   				    <tfoot>
+	   				        <tr>
+	   				            <th>Check Id</th>
+	   				            <th>Order Id</th>
+	   				            <th>Prodcut</th>
+	   				            <th>Price</th>
+	   				            <th>Quantity</th>
+	   				        </tr>
+	   				    </tfoot>
+	   				</table>
+	   			</div>
+
+
+	   		</table>
+	   	</div>
+
+	   </div>
+	   
+	 </div>
+
 
 <script src="/js/check.js"></script>
 <script src="/js/checkdatatable.js"></script>

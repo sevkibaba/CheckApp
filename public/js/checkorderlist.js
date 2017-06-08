@@ -26,10 +26,17 @@ function deleteOrder(orderList){
 		        	btnClass: 'btn-success',
 		        	action: function () {
 
-		        		var checkTotal = $('#total').val();
-
+		        		var checkTotal = $('#total').val().replace(',','');
+		        		checkTotal = parseFloat(checkTotal);
+		        		console.log(checkTotal + "setting variable" + parseFloat(checkTotal) + " " + typeof(checkTotal));
 		        		//Set total value
-		        		checkTotal = parseFloat(checkTotal) - parseFloat(orderList[focusedOrder].quantity)*parseFloat(orderList[focusedOrder].product_price);
+		        		checkTotal = checkTotal - parseFloat(orderList[focusedOrder].quantity)*parseFloat(orderList[focusedOrder].product_price);
+
+		        		console.log(checkTotal + "calculated variable" + parseFloat(checkTotal) + " " + typeof(checkTotal));
+		        		console.log(orderList[focusedOrder].quantity + "  quantity: " + parseFloat(orderList[focusedOrder].quantity) + " " + typeof(orderList[focusedOrder].quantity));
+
+		        		console.log(parseFloat(orderList[focusedOrder].product_price) + "  price: " + parseFloat(orderList[focusedOrder].product_price) + " " + typeof(parseFloat(orderList[focusedOrder].product_price)));
+
 		        		$('#total').attr('value', checkTotal);
 		        		callUpdateTotal(checkTotal);
 
@@ -37,25 +44,6 @@ function deleteOrder(orderList){
 
 		        		window.location.href = "../order/"+orderList[focusedOrder].id + "/delete/" + checkId ; 
 
-		        		// var self = this;
-		        		// // window.location.href = "../order/"+orderList[focusedOrder].id+ "/delete"; 
-
-		        		// $.ajax({
-		        		// 	url:"../order/"+ orderList[focusedOrder].id + "/delete",
-		        		//  	type:'POST',
-		        		// 	success: function(data) {
-				        		// $.alert('Order deleted!');
-
-				        		// //Update Order Table
-				        		// $('#dynamic_field').empty();
-				        		// loadOrdersData(listOrders);
-
-				        		//Set total value
-				        		// self.close();
-		        			// }
-		        		// });
-
-		        		// return false;
 		        	},		        
 		        },
 

@@ -15,6 +15,7 @@ function loadChecksData (cb) {
 	 	type:'GET',
 		success: function(data) {
 			var checkList = JSON.parse(data);
+			window.checkList = checkList;
 			cb(checkList);
 		}
 	});

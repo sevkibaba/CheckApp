@@ -15,8 +15,21 @@ tr:nth-child(even) {
 	background-color: #f2f2f2
 }
 
-div#check-name-container {
-    position: absolute!important;
-    right: 2px!important;
-    top: -4px!important;
+table.dataTable tr.group td{
+	font-weight:bold;
+	background-color:#e0e0eb;
+}
+
+.button-container{
+	float: right;
+}
+/*
+#check-name{
+	height: 80px;
+	width:160px;
+}*/
+
+
+.dataTables_wrapper{
+	width: 50% !important;
 }

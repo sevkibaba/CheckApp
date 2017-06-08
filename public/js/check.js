@@ -75,6 +75,9 @@ function addNamePrice (){
 		var price = $('#pp').val(); 
 		var quantity = $('#quantity').val(); 
 
+		price = parseFloat(price);
+		quantity = parseFloat(quantity);
+
 		if (!quantity||quantity==0){ //Error handling when the quantity is zero or a negative value
 			$('#container').prepend(`<div class="alert alert-danger">
 			Please select quantity!
@@ -95,8 +98,9 @@ function addNamePrice (){
 			complete: function(data) {
 				
 				//Set total value
-				var checkTotal = $('#total').val();
-				checkTotal = +checkTotal + (+quantity*+price);
+				var checkTotal = $('#total').val().replace(',','');
+				checkTotal = parseFloat(checkTotal);
+				checkTotal = checkTotal + (quantity*price);
 				$('#total').attr('value', checkTotal);
 				callUpdateTotal(checkTotal);
 
