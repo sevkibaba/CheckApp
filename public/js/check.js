@@ -31,6 +31,9 @@ function addNP(productList){
 		  if ($(this).val() == userText) {
 
 		  		document.getElementById('selected-product-id').disabled = true;
+		  		$('#selected-product-id').fadeOut(800, "linear");
+		  		$("label[for='products']").fadeOut(400, "linear");
+
 
 			  	$("#addNamePrice").append(`
 			  		<div class ="form-group col-md-2" >
@@ -48,7 +51,7 @@ function addNP(productList){
 			  			<input type="number" class="form-control" id="quantity" name="quantity" min="1" value="1" required>			  		
 			  		</div>
 
-			  		<div class ="form-group col-md-2" >
+			  		<div class ="form-group col-md-2" id="button-container">
 			  			<div><label for="add-order">&nbsp &nbsp &nbsp;</label></div>
 			  			<button class="btn btn-success" id="add-order" >+</button>			  		
 
@@ -63,6 +66,26 @@ function addNP(productList){
 	  			$("#pp").val(currentValue.price);
 	  		};
 		});
+
+		//Animate the selected product details
+		$('#order-container').animate({
+			marginBottom: '0px'
+		});
+		$('.panel-body').animate({
+			paddingTop: '2px'
+		});
+
+	  	setTimeout(function (){
+			$('.form-group.col-md-2').animate({
+				opacity: '0.5',
+			});
+
+			$('#button-container').animate({
+				opacity: '1',
+				left: '10px'
+			});
+
+		}, 1000);
 	});
 };
 
