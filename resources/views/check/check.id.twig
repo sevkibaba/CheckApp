@@ -7,9 +7,10 @@
 	   <li><a data-toggle="tab" href="#menu1">Checks Table</a></li>
 
 	 </ul>
-
-	 <div class="tab-content">
+	
+	<div class="tab-content">
 	   <div id="home" class="tab-pane fade in active">
+
 	     	<div class = "row" id='first-row'>
 
 	     		<div class = "col-md-8 col-md-offset-0">
@@ -18,21 +19,13 @@
 
 	     				<div class = "panel-heading" id="check-name-container">
 	     					<label for="check-name">Check Name</label>
-	     					<input class="form-control" id="check-name" value= "{{ name }}" placeholder="You should enter a check name such as customer name">
+	     					<input class="form-control" id="check-name" value= "{{ name }}" placeholder="Please write a decesive name" >
 	     				</div>
+	     				
+     					<input type="hidden" class="check-id" id="check-id" style="width:40px;" value= "{{ id }}">
 
-	     				<div class = "panel-heading">
-	     					<a id="a-back" href=""><span class="glyphicon glyphicon-arrow-left" id="back-arrow" aria-hidden="true"></span></a>
-	     					<input type="hidden" class="check-id" id="check-id" style="width:40px;" value= "{{ id }}" >
-	     					&nbsp &nbsp <b>L'addition</b>&nbsp &nbsp 
-	     					<a id="a-forward" href=""><span class="glyphicon glyphicon-arrow-right" id="forward-arrow" aria-hidden="true"></span></a>
-	     				</div>
+	     				<div class = "panel-body" style="display:none;">
 
-
-	     				<div class = "panel-body">
-
-	     <!-- 					<form action = "{{path_for('check.add')}}" method = "post" autocomplete = "off">
-	      -->						
 	     						<div class="row-appender">
 
 	     							<div class='row' id="addNamePrice">
@@ -55,41 +48,46 @@
 	     							<input type="text" class ="total " step="0.01" id="total" name="total" value="{{ total|number_format(2) }}">
 
 	     						</div>
+								
+								<div class="button-container" id="newcheck-button">									
+	     							<button class = "btn btn-success" id="new-check">New Check</button>
+		     						<span class="button-container" id="closed-button">
+		     							<label for="closed">Closed?</label>
+		     							
+		     							{% if closed == 1 %}
+		     							    {% set selected = true %}
+		     								<input type="checkbox" id="closed" name="closed" value="" {% if selected %}checked {% endif %}>
+		     							{% else %}
+		     								<input type="checkbox" id="closed" name="closed" value="" {% if selected %} unchecked {% endif %}>
+		     							{% endif %}
 
-	     						<table class="table table-bordered" id="dynamic_field">
-	     							
-	     						</table>
+		     						</span>
+								</div>
 
-	     						<button class = "btn btn-success" id="new-check">New Check</button>
-	     						<span class="button-container">
-	     							<label for="closed">Closed?</label>
-	     							
-	     							{% if closed == 1 %}
-	     							    {% set selected = true %}
-	     								<input type="checkbox" id="closed" name="closed" value="" {% if selected %}checked {% endif %}>
-	     							{% else %}
-	     								<input type="checkbox" id="closed" name="closed" value="" {% if selected %} unchecked {% endif %}>
-	     							{% endif %}
 
-	     						</span>
-
-	     <!-- 					</form>
-	      -->
 	     				</div>
-	     			
+ 						
+ 						<table class="table table-bordered">
+ 							<tbody id="dynamic_field">
+ 								
+ 							</tbody>
+ 						</table>
+ 			
 	     			</div>
 
 	     		</div>
 
+
 	     	</div>
+
 
 	   </div>
 
 	   <div id="menu1" class="tab-pane fade">
 	   	<div class="row" id="second-row">
-	   		<table class="table table-bordered">
-	   			<div class="tabl-container">	
-	   				<table id="table_id" class="display">
+	   		<table class="table table-striped">
+	   			<div class="table-container">	
+	   				<table id="table_id" class="row-border">
 	   				    <thead>
 	   				        <tr>
 	   				            <th>Check Id</th>
@@ -119,8 +117,7 @@
 
 	   </div>
 	   
-	 </div>
-
+	</div>
 
 <script src="/js/check.js"></script>
 <script src="/js/checkdatatable.js"></script>

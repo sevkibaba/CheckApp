@@ -7,29 +7,30 @@ body {
 	float: right;
 }
 
-td {
-	padding: 4px !important;
-}
 
-tr:nth-child(even) {
-	background-color: #f2f2f2
-}
+
 
 table.dataTable tr.group td{
 	font-weight:bold;
-	background-color:#e0e0eb;
+	/*background-color:#e0e0eb;*/
 }
 
 .button-container{
+	margin:15 5 5 5px;
+}
+
+#closed-button{
 	float: right;
 }
-/*
-#check-name{
-	height: 80px;
-	width:160px;
-}*/
-
 
 .dataTables_wrapper{
 	width: 50% !important;
+}
+
+.form-group.col-md-2{
+	float:left;
+}
+
+#order-container{
+	margin-right:2px!important;
 }

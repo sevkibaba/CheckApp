@@ -50,3 +50,8 @@ git add .
 git status
 git commit -m "Data table is working"
 git push origin master
+git status
+git add .
+git status
+git commit -m "Some animations are added to check page"
+git push origin master
