@@ -55,3 +55,7 @@ git add .
 git status
 git commit -m "Some animations are added to check page"
 git push origin master
+git status
+git add .
+git commit -m "Product Id deleted from the check page, removed table styles"
+git push origin master

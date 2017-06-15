@@ -13,7 +13,7 @@
 
 	     	<div class = "row" id='first-row'>
 
-	     		<div class = "col-md-8 col-md-offset-0">
+	     		<div class = "col-md-12 col-md-offset-0">
 
 	     			<div class = "panel panel-default">
 
@@ -30,15 +30,31 @@
 
 	     							<div class='row' id="addNamePrice">
 
-	     								<div class ="form-group col-md-12" id="order-container">
+	     								<div class ="form-group col-md-2" id="order-container">
 
 	     									<label for = "products">Product</label>
-	     									<input list="products" class="form-control form-group-lg input-lg" name="products" id="selected-product-id" type="" placeholder="Ex: Espresso">
+	     									<input list="products" class="form-control" name="products" id="selected-product-id" type="" placeholder="Ex: Espresso">
 	     									<datalist id="products" >
 	     										
 	     									</datalist>
 	     								
 	     								</div>
+
+	     								<div class ="form-group col-md-2" style="display:none;">
+	     									<label for = "pp">Price</label>
+	     									<input type="number" class="form-control" id="pp" name="pp" readonly>
+	     								</div>
+
+	     								<div class ="form-group col-md-2" style="display:none;">
+	     									<label for = "quantity">Quantity</label>
+	     									<input type="number" class="form-control" id="quantity" name="quantity" min="1" value="1" required>			  		
+	     								</div>
+
+	     								<div class ="form-group col-md-2" id="button-container" style="display:none;">
+	     									<div><label for="add-order">&nbsp &nbsp &nbsp;</label></div>
+	     									<button class="btn btn-success" id="add-order" >+</button>			  		
+
+	     								</div>	
 
 	     							</div>
 	     						</div>
@@ -84,36 +100,29 @@
 	   </div>
 
 	   <div id="menu1" class="tab-pane fade">
-	   	<div class="row" id="second-row">
-	   		<table class="table table-striped">
-	   			<div class="table-container">	
-	   				<table id="table_id" class="row-border">
-	   				    <thead>
-	   				        <tr>
-	   				            <th>Check Id</th>
-	   				            <th>Order Id</th>
-	   				            <th>Prodcut</th>
-	   				            <th>Price</th>
-	   				            <th>Quantity</th>
-	   				        </tr>
-	   				    </thead>
-	   				    <tbody>				        
-	   				    </tbody>
-	   				    <tfoot>
-	   				        <tr>
-	   				            <th>Check Id</th>
-	   				            <th>Order Id</th>
-	   				            <th>Prodcut</th>
-	   				            <th>Price</th>
-	   				            <th>Quantity</th>
-	   				        </tr>
-	   				    </tfoot>
-	   				</table>
-	   			</div>
-
-
+	   	<!-- <div class="row" id="second-row"> -->
+	   		<table id="table_id" class="display" cellspacing="0" width="100%">
+	   		    <thead>
+	   		        <tr>
+	   		            <th>Check Id</th>
+	   		            <th>Order Id</th>
+	   		            <th>Prodcut</th>
+	   		            <th>Price</th>
+	   		            <th>Quantity</th>
+	   		        </tr>
+	   		    </thead>
+	   		    
+	   		    <tfoot>
+	   		        <tr>
+	   		            <th>Check Id</th>
+	   		            <th>Order Id</th>
+	   		            <th>Prodcut</th>
+	   		            <th>Price</th>
+	   		            <th>Quantity</th>
+	   		        </tr>
+	   		    </tfoot>
 	   		</table>
-	   	</div>
+	   	<!-- </div> -->
 
 	   </div>
 	   
@@ -130,6 +139,7 @@ sendCheckName();
 sendClosedParameter();
 
 </script>
+
 
 {% endblock %}
 

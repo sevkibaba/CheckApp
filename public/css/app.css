@@ -7,13 +7,34 @@ body {
 	float: right;
 }
 
-
-
-
-table.dataTable tr.group td{
-	font-weight:bold;
-	/*background-color:#e0e0eb;*/
+@media only screen and (max-width : 900px){ 
+	.glyphicon-arrow-right, .glyphicon-arrow-left{
+		font-size: 100% !important;
+	}
 }
+
+  
+.glyphicon-arrow-right, .glyphicon-arrow-left{
+  	font-size: 500%;
+}
+
+div#table_id_wrapper{
+	margin-top: 30px;
+}
+
+
+
+
+table {
+	font-size: 14px;
+}
+
+tr.group,
+tr.group:hover {
+    background-color: #ddd !important;
+}
+
+
 
 .button-container{
 	margin:15 5 5 5px;
@@ -23,14 +44,20 @@ table.dataTable tr.group td{
 	float: right;
 }
 
-.dataTables_wrapper{
-	width: 50% !important;
-}
-
 .form-group.col-md-2{
 	float:left;
 }
 
 #order-container{
 	margin-right:2px!important;
+	width:100%;
+}
+
+.page-columns{
+	float:left;
+}
+
+#container{
+	float:left;
+	width: 50%!important;	
 }

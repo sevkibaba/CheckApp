@@ -3,13 +3,11 @@ $(document).ready(function(){
 });
 
 function addNavButtons(){
-	$('#container').prepend(`
-		<a id="a-back" href=""><span class="glyphicon glyphicon-arrow-left" id="back-arrow" aria-hidden="true"></span></a>
+	$('#container').before(`
+		<div class="page-columns"><a id="a-back" href=""><span class="glyphicon glyphicon-arrow-left" id="back-arrow" aria-hidden="true"></span></a></div>
 	`);
-	$('body').append(`
-		<div>
-			<a id="a-forward" href=""><span class="glyphicon glyphicon-arrow-right" id="forward-arrow" aria-hidden="true"></span></a>
-		</div>
+	$('#container').after(`
+		<div class="page-columns"><a id="a-forward" href=""><span class="glyphicon glyphicon-arrow-right" id="forward-arrow" aria-hidden="true"></span></a></div>
 	`);
 };
 
@@ -30,10 +28,8 @@ loadProductsData(addNP);
 
 //Add the products into the datalist options
 function dataList(productList){
-	//send the product id to a hidden element for the add order button, ajax call XXXX
-
 	var innerElements = productList.map((product)=> {
-		return ' <option data-value="'+product.id+'"value="'+product.name+'"></option>';
+		return ' <option data-value="'+product.id+'"value="'+product.name+'">'+product.price+'</option>';
 	});
 
 	$('#products').html(innerElements.join(''))  ;
@@ -50,28 +46,19 @@ function addNP(productList){
 
 		  		$('#order-container').animate({
 		  			width: '180px',
-		  			fontSize: '13',
-		  			complete: function(){
-		  			}
-		  		});
+
+		  			}, 
+
+		  			{complete: function(){
+		  				console.log('testest');
+				  		$('.form-group.col-md-2').fadeIn(200);
+		  			}}
+		  		);
+
 
 			  	$("#addNamePrice").append(`
 			  		
-			  		<div class ="form-group col-md-2" >
-			  			<label for = "pp">Price</label>
-			  			<input type="number" class="form-control" id="pp" name="pp" readonly>
-			  		</div>
 
-			  		<div class ="form-group col-md-2" >
-			  			<label for = "quantity">Quantity</label>
-			  			<input type="number" class="form-control" id="quantity" name="quantity" min="1" value="1" required>			  		
-			  		</div>
-
-			  		<div class ="form-group col-md-2" id="button-container">
-			  			<div><label for="add-order">&nbsp &nbsp &nbsp;</label></div>
-			  			<button class="btn btn-success" id="add-order" >+</button>			  		
-
-			  		</div>	
 				`);
 			};
 		});
@@ -81,16 +68,6 @@ function addNP(productList){
 	  			$("#pp").val(currentValue.price);
 	  		};
 		});
-
-		//Animate the selected product details
-		$('#order-container').animate({
-			marginBottom: '0px'
-		});
-
-		$('.panel-body').animate({
-			paddingTop: '2px'
-		});
-
 	  	
 		$('.form-group.col-md-2').animate({
 			opacity: '0.5',
@@ -98,7 +75,10 @@ function addNP(productList){
 
 		$('#button-container').animate({
 			opacity: '1',
-			left: '10px'
+		}, 400, function(){
+			$('#button-container').animate({
+				left:'20px'
+			})
 		});
 
 		
@@ -109,21 +89,11 @@ function addNP(productList){
 function addNamePrice (selectedProductId){
 	$('#addNamePrice').on('click', '#add-order', function(e){  //Since I add the button dynamically I had to use delegated event handler
 		var check_id = $('#check-id').val(); 
-		console.log(check_id);
 		var selectedOption = $("[name='products']").val();
 		var selectedId = $('#products [value="' + selectedOption + '"]').data('value')
-
-
-
-
-		// var selectedId = ;
-		console.log(selectedId); 
 		var name = selectedOption;
-		console.log(name); 
 		var price = $('#pp').val();
-		console.log(price); 
 		var quantity = $('#quantity').val(); 
-		console.log(quantity);
 
 		price = parseFloat(price);
 		quantity = parseFloat(quantity);
