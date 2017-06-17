@@ -29,11 +29,25 @@ table {
 	font-size: 14px;
 }
 
-tr.group,
+td a{
+	display: block;
+}
+
+tr.group{
+	background-color: #e8e8e8 !important;
+}
+
 tr.group:hover {
     background-color: #ddd !important;
 }
 
+.odd, .even{
+	background-color: #fcfcff!important;
+}
+
+td {
+ 	vertical-align: middle!important;
+ }
 
 
 .button-container{

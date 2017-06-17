@@ -21,7 +21,6 @@ function loadDataTable() {
 	    "order": [0,'des'],	
 	    "columns": [
 	    	{ data: 'check_id'},
-	    	{ data: 'id'},
 	    	{ data: 'product_name'},
 	    	{ data: 'product_price'},
 	    	{ data: 'quantity'},
@@ -42,7 +41,7 @@ function loadDataTable() {
 	                	for(var key in checkList) {
 		                    if ( last !== group && group == checkList[key].id) {
 		                        $(rows).eq( i ).before(
-		                            '<tr class="group"><td colspan="5"><a href="'+group+'">'+checkList[key].name+'</a></td></tr>'
+		                            '<tr class="group clickable-row" data-href="'+group+'"><td colspan="5"><a href="'+group+'">'+checkList[key].name+ " (Total:"+checkList[key].total+')</a></td></tr>'
 		                        );
 		     
 		                        last = group;
@@ -58,4 +57,7 @@ function loadDataTable() {
 
 $(document).ready(function(){
 	loadDataTable();
+	$(".clickable-row").click(function() {
+	        window.location = $(this).data("href");
+	    });
 });

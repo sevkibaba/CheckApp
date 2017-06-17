@@ -5,7 +5,9 @@ function listOrders(orderList){
 	for (i in orderList){
 		$('#dynamic_field').append(`			
 			<tr id="row` + i + `">
-				<td>` + orderList[i].product_name + ` &nbsp &nbsp   ` + orderList[i].product_price + ` &nbsp &nbsp   ` + orderList[i].quantity + `</td>
+				<td>` + orderList[i].product_name + 
+				`<td>` + orderList[i].product_price + `</td>
+				 <td>`+ orderList[i].quantity + `</td>
 				<td><button name="delete" id="` + i + `" class="btn btn-danger btn_remove confirm">X</button></td>
 			</tr>
 		`);
