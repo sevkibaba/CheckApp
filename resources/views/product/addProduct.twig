@@ -31,15 +31,25 @@
 							{% endif %} -->
 						</div>
 
-						<button type = "submit" class = "btn btn-default">Add Product</button>
+						<button type = "submit" class = "btn btn-success">Add Product</button>
 
 						{{ csrf.field | raw }}
 
 					</form>
 
 
-					<table class="table table-bordered" id="dynamic_field">
-						
+					<table class="table table-bordered table-striped">
+						<thead>
+							<tr>
+								<th>Product</th>
+								<th>Price</th>
+								<th>Update Product</th>
+								<th>Delete Product</th>
+							</tr>							
+						</thead>
+						<tbody id="dynamic_field">
+							
+						</tbody>
 					</table>
 
 				</div>
@@ -99,8 +109,8 @@ function listProducts(productList){
 	for (i in productList){
 		$('#dynamic_field').append(`
 			<tr id="row` + i + `">
-				<td>` + productList[i].name + "     " + productList[i].price + `</td>
-				<td><button name="update" id="update` + i + `" class="btn btn-success btn_update">Update</button></td>
+				<td>` + productList[i].name + "</td><td>" + productList[i].price + `</td>
+				<td><button name="update" id="update` + i + `" class="btn btn-succcess btn_update">Update</button></td>
 				<td><button name="delete" id="` + i + `" class="btn btn-danger btn_remove confirm">X</button></td>
 			</tr>
 			`);
