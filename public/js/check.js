@@ -1,16 +1,3 @@
-$(document).ready(function(){
-	addNavButtons();
-});
-
-function addNavButtons(){
-	$('#container').before(`
-		<div class="page-columns"><a id="a-back" href=""><span class="glyphicon glyphicon-arrow-left" id="back-arrow" aria-hidden="true"></span></a></div>
-	`);
-	$('#container').after(`
-		<div class="page-columns"><a id="a-forward" href=""><span class="glyphicon glyphicon-arrow-right" id="forward-arrow" aria-hidden="true"></span></a></div>
-	`);
-};
-
 $('#new-check').on('click', function(){
 	$.ajax({
 		url:'/check/createnewcheck',

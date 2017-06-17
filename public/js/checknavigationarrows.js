@@ -1,3 +1,21 @@
+$(document).ready(function(){
+	addNavButtons();
+	activateNavButtons();
+});
+
+function addNavButtons(){
+	$('#container').before(`
+		<div class="page-columns" style="display:none;"><a id="a-back" href=""><span class="glyphicon glyphicon-arrow-left" id="back-arrow" aria-hidden="true"></span></a></div>
+	`);
+	$('#container').after(`
+		<div class="page-columns" style="display:none;" ><a id="a-forward" href=""><span class="glyphicon glyphicon-arrow-right" id="forward-arrow" aria-hidden="true"></span></a></div>
+	`);
+};
+
+function activateNavButtons(){
+	$('.page-columns').fadeIn(2900);
+};
+
 function navigationArrows(checkList) {
 
 	var checkCount = Object.keys(checkList).length;
