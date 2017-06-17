@@ -19,6 +19,7 @@ $app->group('', function (){
 
 	$this->get('/auth/signout', 'AuthController:getSignOut')->setName('auth.signout');
 
+	$this->get('/reports/report', 'ReportController:getReport')->setName('reports.report');
 
 	$this->get('/product/addProduct', 'ProductController:getAddProduct')->setName('product.add');
 	

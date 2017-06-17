@@ -123,6 +123,12 @@ $container['OrderController'] = function ($container){
 
 };
 
+$container['ReportController'] = function ($container){
+
+	return new \App\Controllers\Report\ReportController($container);
+
+};
+
 //Since you extend from base Middleware, pass $container in
 $app->add(new \App\Middleware\ValidationErrorsMiddleware($container));
 $app->add(new \App\Middleware\OldInputMiddleware($container));
