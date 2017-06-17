@@ -87,7 +87,7 @@ function addNP(productList){
 
 //Action after + button is clicked.
 function addNamePrice (selectedProductId){
-	$('#addNamePrice').on('click', '#add-order', function(e){  //Since I add the button dynamically I had to use delegated event handler
+	$('#addNamePrice').one('click', '#add-order', function(e){  //Since I add the button dynamically I had to use delegated event handler
 		var check_id = $('#check-id').val(); 
 		var selectedOption = $("[name='products']").val();
 		var selectedId = $('#products [value="' + selectedOption + '"]').data('value')

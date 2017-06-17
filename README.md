@@ -11,6 +11,7 @@ You will need:
 - Twig (https://twig.sensiolabs.org/doc/2.x/installation.html)
 - Respect (http://respect.github.io/Validation/docs/install.html)
 - jQuersy-confirm.js (There is an inline code that gets jQueryconfirm.js)
+- Datatables 
 
 I may have missed some other libraries, if you get errors please contact me and I will update this file. 
 
@@ -22,6 +23,7 @@ Special notes:
 - Database usernames and passwords are available in the app.php file, at lines 18 and 19.
 
 - Future Features: Stock Control, CRM (by collecting customer data)
+
 
 PHP Admin:
 - Created a database called 'codecourse'. We will change it later, it is connected on the app.php under bootstrap folder, line 17.
