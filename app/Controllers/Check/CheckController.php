@@ -60,6 +60,7 @@ class CheckController extends Controller {
 
 				'user_id' => $_SESSION['user'],
 				'check_id' => $request->getParam('check_id'),
+				'check_name' => $request->getParam('check_name'),
 				'product_id' => $request->getParam('product_id'),
 				'product_name' => $request->getParam('product_name'),
 				'product_price' => $request->getParam('product_price'),
@@ -74,10 +75,15 @@ class CheckController extends Controller {
 	}
 
 	public function updateCheckName($request, $response, $args){
-
+		//Update check name on Checks table
 		$check = Check::where('id', $args['id']);
 		$check->update([
 				'name' => $request->getParam('check_name'),
+			]);
+		//Update check name on Orders table
+		$orderCheckName = Order::where('check_id', $args['id']);
+		$orderCheckName->update([
+				'check_name' => $request->getParam('check_name'),
 			]);
 	}
 

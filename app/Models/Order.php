@@ -12,6 +12,7 @@ class Order extends Model{
 
 		'user_id',
 		'check_id',
+		'check_name',
 		'product_id',
 		'product_name',
 		'product_price',

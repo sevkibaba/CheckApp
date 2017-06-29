@@ -37,4 +37,5 @@ class OrderController extends Controller {
 		return $response->withRedirect('/check/'. $args['checkId']);
 
 	}
+
 }

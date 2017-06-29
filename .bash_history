@@ -59,3 +59,27 @@ git status
 git add .
 git commit -m "Product Id deleted from the check page, removed table styles"
 git push origin master
+git  status
+git  status
+git add .
+git  status
+git commit -m "Double script call disabled on add order button  on checks page, fixed datatables bug about rowgroup name"
+git push origin master
+git status
+git add .
+git commit -m "Updated table styles"
+git push origin master
+git status
+git add .
+git commit -m "Updated Add Product page. Styled the products table"
+git push origin master
+git status
+git add .
+git status
+git commit -m "Fading in the navArrows, refactored navArrows.js"
+git push origin master
+git status
+git add .
+git status
+git commit -m "Chart.js is working"
+git push origin master

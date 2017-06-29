@@ -81,6 +81,7 @@ function addNamePrice (selectedProductId){
 		var name = selectedOption;
 		var price = $('#pp').val();
 		var quantity = $('#quantity').val(); 
+		var check_name = $('#check-name').val(); 
 
 		price = parseFloat(price);
 		quantity = parseFloat(quantity);
@@ -90,6 +91,7 @@ function addNamePrice (selectedProductId){
 		 	type:'POST',
 		 	data: {
 		 		'check_id' : check_id ,
+		 		'check_name' : check_name ,
 		 		'product_id' : selectedId,
 		 		'product_name' : name ,
 		 		'product_price' : price,

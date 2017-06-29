@@ -21,6 +21,7 @@ function loadDataTable() {
 	    "order": [0,'des'],	
 	    "columns": [
 	    	{ data: 'check_id'},
+	    	{ data: 'check_name'},
 	    	{ data: 'product_name'},
 	    	{ data: 'product_price'},
 	    	{ data: 'quantity'},
@@ -31,6 +32,10 @@ function loadDataTable() {
 	                    "visible": false,
 	                    "searchable": false
 	                },
+	                {
+	                    "targets": [ 1 ],
+	                    // "visible": false,
+	                }
 	    ],
 	    "drawCallback": function ( settings ) {
 	                var api = this.api();

@@ -1,15 +1,18 @@
 ToDo LIST
-- add scripts to local
 - Try to insert placeholder witj jquery animation
-- Add a header to order table
-- Add cell tables to order table
-- Think about showing only check information on the datatable
-- add link to all row in datatables
 - remove the check from datatables if it is closed
-- Add reports page, chart js
 - Add paid total to the check page, and to then DB
 - Add check name to order table so datatable can search check name
+check name added to orders table-add this data to datatable
+- Remove flash messages from screen after some delay 
 - Bring everyhing in cognitive perseption order
+
+
+Reports
+- Gunluk satis grafigi
+- Aylik satis grafigi
+- En toplan satis grafigi
+- Urune, Gune gore filtreleme
 
 
 			
