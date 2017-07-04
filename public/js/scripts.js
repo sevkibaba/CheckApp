@@ -28,6 +28,8 @@ function loadOrdersData (cb) {
 	 	type:'GET',
 		success: function(data) {
 			var orderList = JSON.parse(data);
+			window.orderList = orderList;
+			showTotals();
 			cb(orderList);
 		}
 	});

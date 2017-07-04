@@ -1,12 +1,11 @@
 ToDo LIST
 - Try to insert placeholder witj jquery animation
-- remove the check from datatables if it is closed
 - Add paid total to the check page, and to then DB
-- Add check name to order table so datatable can search check name
-check name added to orders table-add this data to datatable
+- Add refresh button to give ability to refresh the product selection after an error on entry
+
 - Remove flash messages from screen after some delay 
 - Bring everyhing in cognitive perseption order
-
+- Make the check panel stay at the same place before the navigation arrows fade in
 
 Reports
 - Gunluk satis grafigi

@@ -17,16 +17,23 @@
 
 	     			<div class = "panel panel-default">
 
-	     				<div class = "panel-heading" id="check-name-container">
+	     				<div class = "panel-body col-md-8" id="check-name-container">
+	     					
 	     					<label for="check-name">Check Name</label>
 	     					<input class="form-control" id="check-name" value= "{{ name }}" placeholder="Please write a decesive name" >
+
+	     				</div>
+	     				<div class = "panel-default col-md-4" id="new-check-button-container" style="display:none;">
+	     					
+	     					<button class = "btn btn-success" id="new-check">New Check</button>
+
 	     				</div>
 	     				
      					<input type="hidden" class="check-id" id="check-id" style="width:40px;" value= "{{ id }}">
 
 	     				<div class = "panel-body" style="display:none;">
 
-	     						<div class="row-appender">
+	     						<div class="form-group row-appender">
 
 	     							<div class='row' id="addNamePrice">
 
@@ -59,14 +66,26 @@
 	     							</div>
 	     						</div>
 	     						
-	     						<div class="panel-footer">
-	     							<label for="total">Calculated <br> Total</label>
-	     							<input type="text" class ="total " step="0.01" id="total" name="total" value="{{ total|number_format(2) }}">
+	     						<div class="panel-info" id="total-input-fields" style="display:none;">
+	     							<div class="form-group col-xs-4">
+		     							<label for="total">Calculated Total</label>
+		     							<input type="text" class ="total form-control" step="0.01" id="total" name="total" value="{{ total|number_format(2) }}" readonly>
+	     							</div>
+
+	     							<div class="form-group col-xs-4">
+	     							<label for="total-paid">Paid Total</label>	     							
+	     							<input type="text" class ="total form-control " step="0.01" id="total-paid" name="total-paid" value="{{ total_paid|number_format(2) }}">
+	     							</div>
+									
+									<div class="form-group col-xs-4">
+									<label for="total-remaining">Remaining Total</label>
+	     							<input type="text" class ="total form-control" step="0.01" id="total-remaining" name="total-remaining" value="{{ total_remaining|number_format(2) }}" readonly>
+	     							</div>
 
 	     						</div>
 								
-								<div class="button-container" id="newcheck-button">									
-	     							<button class = "btn btn-success" id="new-check">New Check</button>
+							
+								<div class="button-container">									
 		     						<span class="button-container" id="closed-button">
 		     							<label for="closed">Closed?</label>
 		     							
@@ -79,18 +98,13 @@
 
 		     						</span>
 								</div>
-
+	
 
 	     				</div>
  						
  						<table class="table table-bordered table-striped">
- 							<thead>
- 								<tr>
- 									<th>Order</th>
- 									<th>Price</th>
- 									<th>Quantity</th>
- 									<th>Delete</th>
- 								</tr>
+ 							<thead id="dynamic_field_header">
+ 								
  							</thead>
  							<tbody id="dynamic_field">
  								

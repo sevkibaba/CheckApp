@@ -38,6 +38,7 @@ PHP Admin:
 - Create orders table
     userid
     check_id
+    check_name
     id
     product_id
     product_name

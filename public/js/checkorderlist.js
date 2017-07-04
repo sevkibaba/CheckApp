@@ -2,15 +2,32 @@ loadOrdersData(deleteOrder);
 loadOrdersData(listOrders);
 
 function listOrders(orderList){
+	//Add order table headers if the list is not empty, and add with fade in all order header-orders
+	if(orderList.length!=0){
+		$("#dynamic_field_header").append(`
+			<tr id = "order-table-header" style="display:none;">
+				<th>Order</th>
+				<th>Price</th>
+				<th>Quantity</th>
+				<th>Delete</th>
+			</tr>
+		`);
+
+		$("#order-table-header").fadeIn(300);
+	}
 	for (i in orderList){
+		var respective = 400 + i * 100;
+
 		$('#dynamic_field').append(`			
-			<tr id="row` + i + `">
+			<tr id="row` + i + `" style="display:none;">
 				<td>` + orderList[i].product_name + 
 				`<td>` + orderList[i].product_price + `</td>
 				 <td>`+ orderList[i].quantity + `</td>
 				<td><button name="delete" id="` + i + `" class="btn btn-danger btn_remove confirm">X</button></td>
 			</tr>
 		`);
+
+		$('#row'+i).fadeIn(respective);
 	};
 
 };

@@ -37,16 +37,9 @@ function addNP(productList){
 		  			}, 
 
 		  			{complete: function(){
-		  				console.log('testest');
 				  		$('.form-group.col-md-2').fadeIn(200);
 		  			}}
 		  		);
-
-
-			  	$("#addNamePrice").append(`
-			  		
-
-				`);
 			};
 		});
 
@@ -116,15 +109,24 @@ function addNamePrice (selectedProductId){
 
 };
 
+function showTotals(){
+	if (orderList.length!==0){
+		$("#total-input-fields").fadeIn(500);
+	}
+};
+
+
 // Send Check Name after focus out
 function sendCheckName(){
 	// Fade in select product after focus on check name input field
 	if ($('#check-name').val()){
-			$('.panel-body').fadeIn(900);		
+			$('.panel-body').fadeIn(700);
+			$('#new-check-button-container').fadeIn(1400); //Fades in New check button
 	}else{	
 
 		$('#check-name').keydown(function(){
-			$('.panel-body').fadeIn(900);
+			$('.panel-body').fadeIn(700);
+			$('#new-check-button-container').fadeIn(2200); //Fades in New check button
 		});
 	};	
 	//Post check name after focus out
