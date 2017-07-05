@@ -98,7 +98,7 @@ function addNamePrice (selectedProductId){
 				checkTotal = checkTotal + (quantity*price);
 				$('#total').attr('value', checkTotal);
 				callUpdateTotal(checkTotal);
-
+				calculateTotals();
 				var checkId = $('#check-id').val();
 				window.location.href = "../check/"+ checkId; 
 			}

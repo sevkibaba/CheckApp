@@ -74,7 +74,7 @@
 
 	     							<div class="form-group col-xs-4">
 	     							<label for="total-paid">Paid Total</label>	     							
-	     							<input type="text" class ="total form-control " step="0.01" id="total-paid" name="total-paid" value="{{ total_paid|number_format(2) }}">
+	     							<input type="text" class ="total form-control " step="0.01" id="total-paid" name="total-paid" value="{{ total_paid|number_format(2) }}" onfocus=this.select()>
 	     							</div>
 									
 									<div class="form-group col-xs-4">

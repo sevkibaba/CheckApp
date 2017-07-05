@@ -1,9 +1,10 @@
 document.getElementById('total-paid').addEventListener("keyup", calculateTotals);
 
+
 function calculateTotals (){
 
 	var totalValue = parseFloat(document.getElementById('total').value); 
-	var paidValue = parseFloat(document.getElementById('total-paid').value);
+	var paidValue = parseFloat(document.getElementById('total-paid').value.replace(',', '.'));
 	var remainingValue = parseFloat(document.getElementById('total-remaining').value);
 
 	var calculatedRemaining = totalValue - paidValue;
