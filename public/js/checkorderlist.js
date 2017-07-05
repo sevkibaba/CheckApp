@@ -47,14 +47,9 @@ function deleteOrder(orderList){
 
 		        		var checkTotal = $('#total').val().replace(',','');
 		        		checkTotal = parseFloat(checkTotal);
-		        		console.log(checkTotal + "setting variable" + parseFloat(checkTotal) + " " + typeof(checkTotal));
+
 		        		//Set total value
 		        		checkTotal = checkTotal - parseFloat(orderList[focusedOrder].quantity)*parseFloat(orderList[focusedOrder].product_price);
-
-		        		console.log(checkTotal + "calculated variable" + parseFloat(checkTotal) + " " + typeof(checkTotal));
-		        		console.log(orderList[focusedOrder].quantity + "  quantity: " + parseFloat(orderList[focusedOrder].quantity) + " " + typeof(orderList[focusedOrder].quantity));
-
-		        		console.log(parseFloat(orderList[focusedOrder].product_price) + "  price: " + parseFloat(orderList[focusedOrder].product_price) + " " + typeof(parseFloat(orderList[focusedOrder].product_price)));
 
 		        		$('#total').attr('value', checkTotal);
 		        		callUpdateTotal(checkTotal);

@@ -1,8 +1,8 @@
 ToDo LIST
 - Try to insert placeholder witj jquery animation
-- Add paid total to the check page, and to then DB
+- Update paid total on db after key down, calculate remaining total
 - Add refresh button to give ability to refresh the product selection after an error on entry
-
+- odeme sekli ekle
 - Remove flash messages from screen after some delay 
 - Bring everyhing in cognitive perseption order
 - Make the check panel stay at the same place before the navigation arrows fade in
@@ -10,7 +10,7 @@ ToDo LIST
 Reports
 - Gunluk satis grafigi
 - Aylik satis grafigi
-- En toplan satis grafigi
+- En toplam satis grafigi
 - Urune, Gune gore filtreleme
 
 

@@ -44,7 +44,7 @@ class CheckController extends Controller {
 
 	}
 
-	public function getCheckId($request, $response, $args){	//returns empty array if the user and check id doesn' match
+	public function getCheckId($request, $response, $args){	//returns empty array if the user and check id doesn't match
 		
 		$checkInfo = Check :: where('id', $args['id'])
 		->where('user_id', $_SESSION['user'])
@@ -98,6 +98,19 @@ class CheckController extends Controller {
 		$check = Check::where('id', $args['id']);
 		$check->update([
 				'total' => $updatedTotal,
+			]);
+
+	}
+
+	public function updateOtherTotals($request, $response, $args){
+
+		$paidTotal = $request->getParam('total_paid');
+		$remainingTotal = $request->getParam('total_remaining');
+		
+		$totals = Check::where('id', $args['id']);
+		$totals->update([
+				'total_paid' => $paidTotal,
+				'total_remaining' => $remainingTotal,
 			]);
 
 	}

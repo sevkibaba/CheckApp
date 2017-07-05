@@ -48,7 +48,10 @@ $app->group('', function (){
 
 	$this->post('/check/{id}/updateClosed', 'CheckController:updateCheckClosed');
 
+	$this->post('/check/{id}/calculateTotals', 'CheckController:updateOtherTotals');
+
 	$this->post('/check/{id}/updateTotal', 'CheckController:updateCheckTotal');
+
 
 
 	$this->get('/order/list', 'OrderController:allOrders'); 
