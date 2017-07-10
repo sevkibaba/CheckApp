@@ -88,3 +88,7 @@ td {
 .panel-body{
 	padding:3px !important;
 }
+
+#daily{
+	max-width: 200px;
+}

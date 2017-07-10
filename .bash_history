@@ -83,3 +83,7 @@ git add .
 git status
 git commit -m "Chart.js is working"
 git push origin master
+git status
+git add . 
+git commit -m "Daily Report is working"
+git push origin master
