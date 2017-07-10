@@ -32,7 +32,7 @@ function addNP(productList){
 		  		document.getElementById('selected-product-id').disabled = true;
 
 		  		$('#order-container').animate({
-		  			width: '180px',
+		  			width: '200px',
 
 		  			}, 
 

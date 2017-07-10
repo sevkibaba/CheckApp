@@ -63,8 +63,11 @@ td {
 }
 
 #order-container{
+	margin-left:1px!important;
+
+}
+#order-container{
 	margin-right:2px!important;
-	width:100%;
 }
 
 .page-columns{
@@ -78,6 +81,10 @@ td {
 }
 #new-check{
 	width: 100%;
-	margin-top: 39px;
+	margin-top: 20px;
 
+}
+
+.panel-body{
+	padding:3px !important;
 }

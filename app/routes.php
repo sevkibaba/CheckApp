@@ -53,6 +53,8 @@ $app->group('', function (){
 	$this->post('/check/{id}/updateTotal', 'CheckController:updateCheckTotal');
 
 
+	$this->get('/reports/daily', 'ReportController:todaysChecks'); 
+
 
 	$this->get('/order/list', 'OrderController:allOrders'); 
 
