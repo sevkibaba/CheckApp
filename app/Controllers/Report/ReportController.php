@@ -30,7 +30,7 @@ class ReportController extends Controller {
 		
 		$d = cal_days_in_month(CAL_GREGORIAN,10,2005);
 
-		$monthsChecks = Order :: where('user_id', $_SESSION['user'])
+		$monthsChecks = Check :: where('user_id', $_SESSION['user'])
 		->whereDate('created_at', '<=', date($args['date']."-".$d))
 		->whereDate('created_at', '>=', date($args['date']."-1"))
 		->get()->toArray();

@@ -16,21 +16,27 @@ function daysInMonth(month, year) {
 var days = daysInMonth(monthOfToday, yearOfToday);
 
 // Get this months check data
-function todaysChecksAjax(cb){
+function monthsChecksAjax(cb){
   $.ajax({
         url:'/reports/monthly/' + yearOfToday + "-" + monthOfToday,
         type:'GET',
         
         success: function(data) {
-          todaysChecks = JSON.parse(data);
-          cb(todaysChecks);
+          monthssChecks = JSON.parse(data);
+          cb(monthsChecks);
         },
   });
 };
 
-// var groupedOrders = {};
-// var dailyLabel = [];
-// var dailyData = [];
+var dailyTotal = {};
+var dailyPaid = [];
+var labels = (function (){
+  var myArray = [];
+  for(var i = 1;i < (days+1); i++){
+    myArray.push(i);
+  };
+  return myArray;
+})();
 
 // function loadTodaysChecks(checkObject) {
 

@@ -2,128 +2,85 @@
 
 {% block content %}
 
-	<ul class="nav nav-tabs">
-	   <li class="active"><a data-toggle="tab" href="#home">Current Check</a></li>
-	   <li><a data-toggle="tab" href="#menu1">Checks Table</a></li>
-
-	 </ul>
+<ul class="nav nav-tabs">
+   <li class="active"><a data-toggle="tab" href="#home">Current Check</a></li>
+   <li><a data-toggle="tab" href="#menu1">Checks Table</a></li>
+</ul>
 	
-	<div class="tab-content">
-	   <div id="home" class="tab-pane fade in active">
-
-	     	<div class = "row" id='first-row'>
-
-	     		<div class = "col-md-12 col-md-offset-0">
-
-	     			<div class = "panel panel-default">
-
-	     				<div class = "panel-body col-md-8" id="check-name-container">
-	     					
+<div class="tab-content">
+   <div id="home" class="tab-pane fade in active">
+     	<div class = "row" id='first-row'>
+     		<div class = "col-md-12 col-md-offset-0">
+     			<div class = "panel panel-default">
+     				<div class = "panel-body col-md-8" id="check-name-container">
 	     					<label for="check-name">Check Name</label>
-	     					<input class="form-control" id="check-name" value= "{{ name }}" placeholder="Please write a decesive name" >
-
-	     				</div>
-	     				<div class = "panel-default col-md-4" id="new-check-button-container" style="display:none;">
-	     					
+	     					<input class="form-control" id="check-name" value= "{{ name }}" placeholder="Please write a decesive name">
+	     			</div>
+	     			<div class = "panel-default col-md-4" id="new-check-button-container" style="display:none;">
 	     					<button class = "btn btn-success" id="new-check">New Check</button>
-
-	     				</div>
-	     				
-     					<input type="hidden" class="check-id" id="check-id" style="width:40px;" value= "{{ id }}">
+	     			</div>
+					<input type="hidden" class="check-id" id="check-id" style="width:40px;" value= "{{ id }}">
 			</div>
 			<div class="row" id="second-row">
-	     				<div class = "panel-body" style="display:none;">
-
-	     						<div class="form-group row-appender">
-
-	     							<div class='row' id="addNamePrice">
-
-	     								<div class ="form-group col-md-2" id="order-container">
-
-	     									<label for = "products">Product</label>
-	     									<input list="products" class="form-control" name="products" id="selected-product-id" type="" placeholder="Ex: Espresso">
-	     									<datalist id="products" >
-	     										
-	     									</datalist>
-	     								
-	     								</div>
-
-	     								<div class ="form-group col-md-2" style="display:none;">
-	     									<label for = "pp">Price</label>
-	     									<input type="number" class="form-control" id="pp" name="pp" readonly>
-	     								</div>
-
-	     								<div class ="form-group col-md-2" style="display:none;">
-	     									<label for = "quantity">Quantity</label>
-	     									<input type="number" class="form-control" id="quantity" name="quantity" min="1" value="1" required>			  		
-	     								</div>
-
-	     								<div class ="form-group col-md-2" id="button-container" style="display:none;">
-	     									<div><label for="add-order">&nbsp &nbsp &nbsp;</label></div>
-	     									<button class="btn btn-success" id="add-order" >+</button>			  		
-
-	     								</div>	
-
-	     							</div>
-	     						</div>
-	     						
-	     						<div class="panel-info" id="total-input-fields" style="display:none;">
-	     							<div class="form-group col-xs-4">
-		     							<label for="total">Calculated Total</label>
-		     							<input type="text" class ="total form-control" step="0.01" id="total" name="total" value="{{ total|number_format(2) }}" readonly>
-	     							</div>
-
-	     							<div class="form-group col-xs-4">
-	     							<label for="total-paid">Paid Total</label>	     							
-	     							<input type="text" class ="total form-control " step="0.01" id="total-paid" name="total-paid" value="{{ total_paid|number_format(2) }}" onfocus=this.select()>
-	     							</div>
-									
-									<div class="form-group col-xs-4">
-									<label for="total-remaining">Remaining Total</label>
-	     							<input type="text" class ="total form-control" step="0.01" id="total-remaining" name="total-remaining" value="{{ total_remaining|number_format(2) }}" readonly>
-	     							</div>
-
-	     						</div>
-								
-							
-								<div class="button-container">									
-		     						<span class="button-container" id="closed-button">
-		     							<label for="closed">Closed?</label>
-		     							
-		     							{% if closed == 1 %}
-		     							    {% set selected = true %}
+   				<div class = "panel-body" style="display:none;">
+						<div class='panel-body' id="addNamePrice">
+							<div class ="form-group col-md-2" id="order-container">
+								<label for = "products">Product</label>
+								<input list="products" class="form-control" name="products" id="selected-product-id" type="" placeholder="Ex: Espresso">
+								<datalist id="products" >
+								</datalist>
+							</div>
+							<div class ="form-group col-md-2" style="display:none;">
+								<label for = "pp">Price</label>
+								<input type="number" class="form-control" id="pp" name="pp" readonly>
+							</div>
+							<div class ="form-group col-md-2" style="display:none;">
+								<label for = "quantity">Quantity</label>
+								<input type="number" class="form-control" id="quantity" name="quantity" min="1" value="1" required>			  		
+							</div>
+							<div class ="form-group col-md-2" id="button-container" style="display:none;">
+								<div><label for="add-order">&nbsp &nbsp &nbsp;</label></div>
+								<button class="btn btn-success" id="add-order" >+</button>			  		
+							</div>	
+						</div>
+   						<div class="panel-info" id="total-input-fields" style="display:none;">
+   							<div class="form-group col-xs-4">
+     							<label for="total">Calculated Total</label>
+     							<input type="text" class ="total form-control" step="0.01" id="total" name="total" value="{{ total|number_format(2) }}" readonly>
+   							</div>
+   							<div class="form-group col-xs-4">
+     							<label for="total-paid">Paid Total</label>	     							
+     							<input type="text" class ="total form-control " step="0.01" id="total-paid" name="total-paid" value="{{ total_paid|number_format(2) }}" onfocus=this.select()>
+   							</div>
+							<div class="form-group col-xs-4">
+								<label for="total-remaining">Remaining Total</label>
+     							<input type="text" class ="total form-control" step="0.01" id="total-remaining" name="total-remaining" value="{{ total_remaining|number_format(2) }}" readonly>
+   							</div>
+   						</div>
+						<div class="button-container">									
+     						<span class="button-container" id="closed-button">
+	   							<label for="closed">Closed?</label>
+	     							{% if closed == 1 %}
+	     							    {% set selected = true %}
 		     								<input type="checkbox" id="closed" name="closed" value="" {% if selected %}checked {% endif %}>
 		     							{% else %}
 		     								<input type="checkbox" id="closed" name="closed" value="" {% if selected %} unchecked {% endif %}>
-		     							{% endif %}
-
-		     						</span>
-								</div>
-	
-
-	     				</div>
+	     							{% endif %}
+	     						</span>
+						</div>
+     				</div>
  						
- 						<table class="table table-bordered table-striped">
- 							<thead id="dynamic_field_header">
- 								
- 							</thead>
- 							<tbody id="dynamic_field">
- 								
- 							</tbody>
- 						</table>
- 			
+					<table class="table table-bordered table-striped">
+						<thead id="dynamic_field_header">
+						</thead>
+						<tbody id="dynamic_field">
+						</tbody>
+					</table> 			
 	     			</div>
-
 	     		</div>
-
-
 	     	</div>
-
-
 	   </div>
-
 	   <div id="menu1" class="tab-pane fade">
-	   	<!-- <div class="row" id="second-row"> -->
 	   		<table id="table_id" class="table" cellspacing="0" width="100%">
 	   		    <thead>
 	   		        <tr>
@@ -145,12 +102,9 @@
 	   		        </tr>
 	   		    </tfoot>
 	   		</table>
-	   	<!-- </div> -->
-
 	   </div>
-	   
 	</div>
-
+</div>
 <script src="/js/check.js"></script>
 <script src="/js/checkdatatable.js"></script>
 <script src="/js/checknavigationarrows.js"></script>

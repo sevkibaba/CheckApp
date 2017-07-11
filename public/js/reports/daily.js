@@ -18,6 +18,7 @@ function todaysChecksAjax(cb){
   });
 };
 
+
 var groupedOrders = {};
 var dailyLabel = [];
 var dailyData = [];
@@ -50,6 +51,14 @@ function loadTodaysChecks(checkObject) {
 
     };
     drawDailyChart(dailyLabel, dailyData);
+
+    //send total to span-header
+    var dailyTotal = 0;
+    dailyData.forEach(function(item, index){
+      total += item;
+    }); 
+    console.log(total + "ddd");
+    document.getElementById('span-header').innerHTML = total;
 };
 
 todaysChecksAjax(loadTodaysChecks);
@@ -59,6 +68,7 @@ function randomNumber(){
     var numbers = Math.round(Math.random() * 200) + Math.round(Math.random() * 150);
     return numbers;
 };
+
 
 var bgColors = [];
 var bdrColors = [];
@@ -71,6 +81,7 @@ function createColors(){
     });
     console.log(bgColors +  " " + bdrColors); 
 };
+
 
 function drawDailyChart(dailyLabel, dailyData){
 
