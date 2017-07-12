@@ -49,16 +49,14 @@ function loadTodaysChecks(checkObject) {
         };
     dailyData.push(myTotal);
 
-    };
-    drawDailyChart(dailyLabel, dailyData);
-
-    //send total to span-header
-    var dailyTotal = 0;
-    dailyData.forEach(function(item, index){
-      total += item;
-    }); 
-    console.log(total + "ddd");
-    document.getElementById('span-header').innerHTML = total;
+  };
+  drawDailyChart(dailyLabel, dailyData);
+  //send total to span-header
+  var dailyTotal = 0;
+  dailyData.forEach(function(item, index){
+    dailyTotal += item;
+  }); 
+  document.getElementById('daily-header').innerHTML = "Daily Total: " + dailyTotal;
 };
 
 todaysChecksAjax(loadTodaysChecks);
@@ -79,7 +77,6 @@ function createColors(){
         bgColors.push(rgbaVersion); 
         bdrColors.push(rgbaVersion); 
     });
-    console.log(bgColors +  " " + bdrColors); 
 };
 
 

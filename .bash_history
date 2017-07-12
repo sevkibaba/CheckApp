@@ -87,3 +87,7 @@ git status
 git add . 
 git commit -m "Daily Report is working"
 git push origin master
+git status
+git add .
+git commit -m "visual bug on check page fixed"
+git push origin master

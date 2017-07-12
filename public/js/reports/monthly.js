@@ -5,9 +5,6 @@ var dayOfToday = today.getDate();
 var monthOfToday = today.getMonth() + 1;
 var yearOfToday = today.getFullYear();
 
-console.log(dayOfToday);
-console.log(monthOfToday);
-console.log(yearOfToday);
 
 function daysInMonth(month, year) {
   return new Date(year, month, 0).getDate();
@@ -22,53 +19,54 @@ function monthsChecksAjax(cb){
         type:'GET',
         
         success: function(data) {
-          monthssChecks = JSON.parse(data);
+          monthsChecks = JSON.parse(data);
           cb(monthsChecks);
         },
   });
 };
 
-var dailyTotal = {};
+var dailyTotal = [];
 var dailyPaid = [];
-var labels = (function (){
-  var myArray = [];
-  for(var i = 1;i < (days+1); i++){
-    myArray.push(i);
+var labels = [];
+var groupedTotal = {};
+var groupedPaid = {};
+var MyIndex = 0;
+
+function loadMonthsChecks(checkObject) {
+
+  checkObject.forEach(function(currValue, index, object){
+    var thisDate = new Date(currValue.created_at).getDate();
+    thisDateString = thisDate.toString();
+
+      console.log(thisDate +'   '+currValue.total_paid);  
+
+    if(groupedTotal[thisDateString] == undefined){
+
+      groupedTotal[thisDateString] = currValue.total;
+      groupedPaid[thisDateString] = currValue.total_paid;
+    }else{
+      groupedTotal[thisDateString] = parseFloat(groupedTotal[thisDateString]) + parseFloat(currValue.total);
+      groupedPaid[thisDateString] = parseFloat(groupedPaid[thisDateString]) + parseFloat(currValue.total_paid);
+    };
+ 
+  });
+
+  for (var name in groupedTotal){
+    labels.push(name) ;
   };
-  return myArray;
-})();
 
-// function loadTodaysChecks(checkObject) {
-
-//   myIndex = 0;
-//   checkObject.forEach(function(currValue, index, object){
-
-//     if(groupedOrders[currValue.product_name] === undefined){
-//       groupedOrders[currValue.product_name] = [currValue.product_price*currValue.quantity];
-//     }else{
-//       groupedOrders[currValue.product_name].push(currValue.product_price*currValue.quantity);
-//     }
-      
-//   });
+  for (var label in groupedTotal){
+    dailyTotal.push(groupedTotal[label]);
+  };
   
-
-//   for (var name in groupedOrders){
-//     dailyLabel.push(name) ;
-//   };
-
-//   for (var label in groupedOrders){
-//     var myTotal = 0;
-
-//     for(var i = 0; i < groupedOrders[label].length; i ++){
-//       myTotal = myTotal + groupedOrders[label][i];
-//         };
-//     dailyData.push(myTotal);
-
-//     };
+  for (var label in groupedPaid){
+    dailyPaid.push(groupedPaid[label]);
+  };
+    
 //     drawDailyChart(dailyLabel, dailyData);
-// };
+};
 
-// todaysChecksAjax(loadTodaysChecks);
+monthsChecksAjax(loadMonthsChecks);
 
 
 // function randomNumber(){
