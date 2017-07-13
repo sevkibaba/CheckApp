@@ -63,50 +63,39 @@ function loadMonthsChecks(checkObject) {
     dailyPaid.push(groupedPaid[label]);
   };
     
-//     drawDailyChart(dailyLabel, dailyData);
+  drawMonthlyChart(labels, dailyTotal, dailyPaid);
 };
 
 monthsChecksAjax(loadMonthsChecks);
 
 
-// function randomNumber(){
-//     var numbers = Math.round(Math.random() * 200) + Math.round(Math.random() * 150);
-//     return numbers;
-// };
+function drawMonthlyChart(labels, dailyTotal, dailyPaid){
 
-// var bgColors = [];
-// var bdrColors = [];
-// function createColors(){
-
-//     dailyData.forEach(function(){
-//         var rgbaVersion = "rgba(" + randomNumber() + "," + randomNumber(50) + "," + randomNumber(10) + ", 0.2)";
-//         bgColors.push(rgbaVersion); 
-//         bdrColors.push(rgbaVersion); 
-//     });
-//     console.log(bgColors +  " " + bdrColors); 
-// };
-
-// function drawDailyChart(dailyLabel, dailyData){
-
-//     createColors();
-//     //write random color function. assign bg and border colors at the same time
-//     var ctx = document.getElementById("daily").getContext('2d');
-//     var myChart = new Chart(ctx, {
-//         type: 'doughnut',
-//         height: '200px',
-//         data: {
-//             labels: dailyLabel,
-//             datasets: [{
-//                 label: '# of Votes',
-//                 data: dailyData,
-//                 backgroundColor: bgColors,
-//                 borderColor: bdrColors,
-//                 borderWidth: 1
-//             }]
-//         },
+    var ctx = document.getElementById("monthly").getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'line',
+        height: '200px',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: 'Calculated Totals',
+                fill: false,
+                data: dailyTotal,
+                backgroundColor: 'blue',
+                borderColor: 'blue',
+            },
+            {
+                label: 'Paid Totals',
+                fill: false,
+                data: dailyPaid,
+                backgroundColor: 'red',
+                borderColor: 'red',
+            }
+            ]
+        },
         
-//     });
+    });
     
-// };
+};
 
 

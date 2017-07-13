@@ -91,3 +91,7 @@ git status
 git add .
 git commit -m "visual bug on check page fixed"
 git push origin master
+git status
+git add .
+git commit -m "Monthly data ready in front end, need to draw the graph"
+git push origin master
