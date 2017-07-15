@@ -3,6 +3,9 @@ body {
 	padding-bottom: 80px;
 }
 
+.row{
+	margin:10 5 20 5px;
+}
 #add-button {
 	float: right;
 }

@@ -57,6 +57,7 @@ function loadMonthsChecks(checkObject) {
 
 monthsChecksAjax(loadMonthsChecks);
 
+var paidLineColor = "rgba(46,242,157, 0.3)" ;
 
 function drawMonthlyChart(labels, dailyTotal, dailyPaid){
 
@@ -70,15 +71,15 @@ function drawMonthlyChart(labels, dailyTotal, dailyPaid){
                 label: 'Calculated Totals (' + calMonthTotal + ')',
                 fill: false,
                 data: dailyTotal,
-                backgroundColor: 'blue',
-                borderColor: 'blue',
+                backgroundColor: 'black',
+                borderColor: 'black',
             },
             {
                 label: 'Paid Totals(' + paidMonthTotal + ')',
                 fill: false,
                 data: dailyPaid,
-                backgroundColor: 'red',
-                borderColor: 'red',
+                backgroundColor: paidLineColor,
+                borderColor: paidLineColor
             }
             ]
         },
