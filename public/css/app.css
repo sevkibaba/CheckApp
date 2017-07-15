@@ -11,6 +11,9 @@ body {
 	.glyphicon-arrow-right, .glyphicon-arrow-left{
 		font-size: 100% !important;
 	}
+	body {
+		font-size:8px;
+	}
 }
 
   

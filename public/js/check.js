@@ -121,12 +121,10 @@ function sendCheckName(){
 	// Fade in select product after focus on check name input field
 	if ($('#check-name').val()){
 			$('.panel-body').fadeIn(700);
-			$('#new-check-button-container').fadeIn(1400); //Fades in New check button
 	}else{	
 
 		$('#check-name').keydown(function(){
 			$('.panel-body').fadeIn(700);
-			$('#new-check-button-container').fadeIn(2200); //Fades in New check button
 		});
 	};	
 	//Post check name after focus out

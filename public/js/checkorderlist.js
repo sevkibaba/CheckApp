@@ -13,8 +13,11 @@ function listOrders(orderList){
 			</tr>
 		`);
 
-		
+
 		$("#order-table-header").fadeIn(300);
+		$('#new-check-button-container').fadeIn(1400)
+		$('#check-name-container').removeClass('col-md-12').addClass('col-md-8');
+		$('#closed-button-container').fadeIn(3000);
 	}
 	for (i in orderList){
 		var respective = 400 + i * 100;

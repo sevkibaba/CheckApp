@@ -12,7 +12,7 @@
      	<div class = "row" id='first-row'>
      		<div class = "col-md-12 col-md-offset-0">
      			<div class = "panel panel-default">
-     				<div class = "panel-body col-md-8" id="check-name-container">
+     				<div class = "panel-body col-md-12" id="check-name-container">
 	     					<label for="check-name">Check Name</label>
 	     					<input class="form-control" id="check-name" value= "{{ name }}" placeholder="Please write a decesive name">
 	     			</div>
@@ -57,7 +57,8 @@
      							<input type="text" class ="total form-control" step="0.01" id="total-remaining" name="total-remaining" value="{{ total_remaining|number_format(2) }}" readonly>
    							</div>
    						</div>
-						<div class="button-container">									
+     				</div>
+						<div class="button-container" id="closed-button-container" style="display:none;">									
      						<span class="button-container" id="closed-button" style="diplay:none;">
 	   							<label for="closed">Closed?</label>
 	     							{% if closed == 1 %}
@@ -68,7 +69,6 @@
 	     							{% endif %}
 	     						</span>
 						</div>
-     				</div>
  						
 					<table class="table table-striped" id="order-list-container">
 						<thead id="dynamic_field_header">
