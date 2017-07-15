@@ -7,72 +7,13 @@ ToDo LIST
 - Make the check panel stay at the same place before the navigation arrows fade in
 
 Reports
-- Gunluk satis grafigi
-- Aylik satis grafigi
 - En toplam satis grafigi
-- Urune, Gune gore filtreleme
+- new check button and closed button should be visible after 
+- change the row system on check page
+- change the order table styling- round the corners and remove the cell borders
 
 
 
-
-//send browser date to server
-// var today = new Date();
-
-// var dayOfToday = today.getDate();
-// var monthOfToday = today.getMonth();
-// var yearOfToday = today.getFullYear();
-
-//Get todays check data
-// function todaysChecksAjax(cb){
-//   $.ajax({
-//         url:'/reports/daily',
-//         type:'GET',
-        
-//         success: function(data) {
-//           todaysChecks = JSON.parse(data);
-//           cb(todaysChecks);
-//         },
-//   });
-// };
-
-// var groupedOrders = {};
-// var dailyLabel = [];
-// var dailyData = [];
-
-// function loadTodaysChecks(checkObject) {
-
-//   myIndex = 0;
-//   checkObject.forEach(function(currValue, index, object){
-
-//     if(groupedOrders[currValue.product_name] === undefined){
-//       groupedOrders[currValue.product_name] = [currValue.product_price*currValue.quantity];
-//     }else{
-//       groupedOrders[currValue.product_name].push(currValue.product_price*currValue.quantity);
-//     }
-      
-//   });
-  
-
-//   for (var name in groupedOrders){
-//     dailyLabel.push(name) ;
-//   };
-
-//   for (var label in groupedOrders){
-//     console.log(label);
-//     var myTotal = 0;
-//     console.log(myTotal);
-
-//     for(var i = 0; i < groupedOrders[label].length; i ++){
-//       console.log(groupedOrders[label][i]);
-//       myTotal = myTotal + groupedOrders[label][i];
-//     };
-//     dailyData.push(myTotal);
-
-//     console.log(dailyData);
-//   };
-// };
-
-// todaysChecksAjax(loadTodaysChecks);
 
 
 

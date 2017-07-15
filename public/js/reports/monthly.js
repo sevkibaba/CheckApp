@@ -1,18 +1,11 @@
 // send browser date to server
 var today = new Date();
 
-var dayOfToday = today.getDate();
 var monthOfToday = today.getMonth() + 1;
 var yearOfToday = today.getFullYear();
 
 
-function daysInMonth(month, year) {
-  return new Date(year, month, 0).getDate();
-};
-
-var days = daysInMonth(monthOfToday, yearOfToday);
-
-// Get this months check data
+// Get this month's check data
 function monthsChecksAjax(cb){
   $.ajax({
         url:'/reports/monthly/' + yearOfToday + "-" + monthOfToday,
@@ -25,20 +18,22 @@ function monthsChecksAjax(cb){
   });
 };
 
+//variables to calculate monthly graph data
 var dailyTotal = [];
 var dailyPaid = [];
 var labels = [];
 var groupedTotal = {};
 var groupedPaid = {};
-var MyIndex = 0;
+var calMonthTotal;
+var paidMonthTotal;
 
+// Callback function to get the check values of the month, object is the all checks of the month
 function loadMonthsChecks(checkObject) {
 
+  //prepare the the totals of the days
   checkObject.forEach(function(currValue, index, object){
     var thisDate = new Date(currValue.created_at).getDate();
     thisDateString = thisDate.toString();
-
-      console.log(thisDate +'   '+currValue.total_paid);  
 
     if(groupedTotal[thisDateString] == undefined){
 
@@ -51,18 +46,12 @@ function loadMonthsChecks(checkObject) {
  
   });
 
-  for (var name in groupedTotal){
-    labels.push(name) ;
-  };
-
-  for (var label in groupedTotal){
-    dailyTotal.push(groupedTotal[label]);
-  };
-  
-  for (var label in groupedPaid){
-    dailyPaid.push(groupedPaid[label]);
-  };
-    
+  //prepare the arrays to be used in monthly chart
+  for (var name in groupedTotal){ labels.push(name);};
+  for (var label in groupedTotal){ dailyTotal.push(groupedTotal[label]); };
+  calMonthTotal = dailyTotal.reduce(function(acc, val){ return acc+val });
+  for (var label in groupedPaid){ dailyPaid.push(groupedPaid[label]); };
+  paidMonthTotal = dailyPaid.reduce(function(acc, val){ return acc+val });  
   drawMonthlyChart(labels, dailyTotal, dailyPaid);
 };
 
@@ -78,14 +67,14 @@ function drawMonthlyChart(labels, dailyTotal, dailyPaid){
         data: {
             labels: labels,
             datasets: [{
-                label: 'Calculated Totals',
+                label: 'Calculated Totals (' + calMonthTotal + ')',
                 fill: false,
                 data: dailyTotal,
                 backgroundColor: 'blue',
                 borderColor: 'blue',
             },
             {
-                label: 'Paid Totals',
+                label: 'Paid Totals(' + paidMonthTotal + ')',
                 fill: false,
                 data: dailyPaid,
                 backgroundColor: 'red',

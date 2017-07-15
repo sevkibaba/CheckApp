@@ -13,6 +13,7 @@ function listOrders(orderList){
 			</tr>
 		`);
 
+		
 		$("#order-table-header").fadeIn(300);
 	}
 	for (i in orderList){

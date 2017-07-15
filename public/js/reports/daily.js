@@ -18,14 +18,15 @@ function todaysChecksAjax(cb){
   });
 };
 
-
+//variables to calculate daily graph data
 var groupedOrders = {};
 var dailyLabel = [];
 var dailyData = [];
 
+// Callback function to get the check values of the month, object is the all checks of the month
 function loadTodaysChecks(checkObject) {
 
-  myIndex = 0;
+  //prepare the the totals of the days
   checkObject.forEach(function(currValue, index, object){
 
     if(groupedOrders[currValue.product_name] === undefined){
@@ -51,6 +52,7 @@ function loadTodaysChecks(checkObject) {
 
   };
   drawDailyChart(dailyLabel, dailyData);
+  
   //send total to span-header
   var dailyTotal = 0;
   dailyData.forEach(function(item, index){
@@ -61,13 +63,13 @@ function loadTodaysChecks(checkObject) {
 
 todaysChecksAjax(loadTodaysChecks);
 
-
+//random numbers to be used in daily chart coloring
 function randomNumber(){
     var numbers = Math.round(Math.random() * 200) + Math.round(Math.random() * 150);
     return numbers;
 };
 
-
+//use random numbers and create colors
 var bgColors = [];
 var bdrColors = [];
 function createColors(){

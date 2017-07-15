@@ -24,7 +24,7 @@
 			<div class="row" id="second-row">
    				<div class = "panel-body" style="display:none;">
 						<div class='panel-body' id="addNamePrice">
-							<div class ="form-group col-md-2" id="order-container">
+							<div class ="form-group col-md-12" id="order-container">
 								<label for = "products">Product</label>
 								<input list="products" class="form-control" name="products" id="selected-product-id" type="" placeholder="Ex: Espresso">
 								<datalist id="products" >
@@ -58,7 +58,7 @@
    							</div>
    						</div>
 						<div class="button-container">									
-     						<span class="button-container" id="closed-button">
+     						<span class="button-container" id="closed-button" style="diplay:none;">
 	   							<label for="closed">Closed?</label>
 	     							{% if closed == 1 %}
 	     							    {% set selected = true %}
@@ -70,7 +70,7 @@
 						</div>
      				</div>
  						
-					<table class="table table-bordered table-striped">
+					<table class="table table-striped" id="order-list-container">
 						<thead id="dynamic_field_header">
 						</thead>
 						<tbody id="dynamic_field">
