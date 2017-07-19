@@ -99,3 +99,67 @@ git status
 git add .
 git commit -m "Grand total added to monthly report. Some bug fixes"
 git push origin master
+cat ~/.ssh/id_rsa.pub
+ssh sevki@165.227.146.11
+cd
+ls
+cd //
+cd/
+cd /
+ls
+pwd
+ls
+cd usr
+ls
+cd /c/
+ls
+ssh sevki@165.227.146.11
+ssh sevki@165.227.146.11
+ls
+cd ..
+cd ..
+cd ..
+ls
+cd Users/
+ls
+ls -a
+cd ~/.ssh
+cd
+cd ..
+ cd ..
+cd ..
+cd Users/
+ls
+cd jotform/
+ls -a
+clear
+mkdir .ssh
+cd .ssh
+ls
+ssh-keygen -t rsa
+ssh sevki@165.227.146.11
+ls -al ~/.ssh
+ls
+cd ~/.ssh
+ls
+ls -al ~/.ssh
+pwd
+cd /c/Users/
+pwd
+cd
+ls
+cd /c/Users/
+ls
+cd jotform/
+ls
+cd Desktop/
+ls
+mkdir test
+cd test/
+ls
+git clone https://github.com/sevkibaba/starwars-names.git
+ls
+ mysql -u root -p -h 127.0.0.1 -P 3306
+mysql -u root -p -h 127.0.0.1 -P 3306
+mysql -u root -p -h 127.0.0.1 -P 3306
+mysql -u root -p -h 127.0.0.1 -P 3306

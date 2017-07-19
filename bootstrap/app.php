@@ -15,7 +15,7 @@ $app = new \Slim\App([
 				'driver' => 'mysql',
 				'host' => 'localhost',
 				'database' => 'checkapp',
-				'username' => 'root',
+				'username' => 'sevki',
 				'password' => 'baba',
 				'charset' => 'utf8',
 				'collation' => 'utf8_unicode_ci',
@@ -31,8 +31,8 @@ $container = $app->getContainer();
 $capsule = new \Illuminate\Database\Capsule\Manager;
 $capsule->addConnection($container['settings']['db']);
 $capsule->setAsGlobal();
-$capsule->bootEloquent();
-
+$capsule->bootEloquent()
+;
 
 $container['db'] = function ($container) use ($capsule){
 

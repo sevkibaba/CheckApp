@@ -1,19 +1,19 @@
 $(document).ready(function(){
-	addNavButtons();
-	activateNavButtons();
 });
 
 function addNavButtons(){
 	$('#container').before(`
-		<div class="page-columns" style="display:none;"><a id="a-back" href=""><span class="glyphicon glyphicon-arrow-left" id="back-arrow" aria-hidden="true"></span></a></div>
+		<div class="page-columns" style="opacity:0.1;"><a id="a-back" href=""><span class="glyphicon glyphicon-arrow-left" id="back-arrow" aria-hidden="true"></span></a></div>
 	`);
 	$('#container').after(`
-		<div class="page-columns" style="display:none;" ><a id="a-forward" href=""><span class="glyphicon glyphicon-arrow-right" id="forward-arrow" aria-hidden="true"></span></a></div>
+		<div class="page-columns" style="opacity:0.1;" ><a id="a-forward" href=""><span class="glyphicon glyphicon-arrow-right" id="forward-arrow" aria-hidden="true"></span></a></div>
 	`);
 };
 
 function activateNavButtons(){
-	$('.page-columns').fadeIn(2900);
+	$('.page-columns').animate({
+		opacity:'1',
+	});
 };
 
 function navigationArrows(checkList) {
@@ -24,17 +24,28 @@ function navigationArrows(checkList) {
 	var checkId = parseInt($('#check-id').val());
 	var backId;
 	var forwardId;
+//Prepare the page from left to right and check the number of checks.
+	if(checkCount == 1){
+		$('#document-container, .nav-tabs').fadeIn(300);		
+	} else if (checkId==biggest){
+		addNavButtons();
+		$('#document-container, .nav-tabs').fadeIn(300);		
+		activateNavButtons();
 
-	if (checkId==biggest){
-		$('#a-forward').attr('onclick', "return false"); //This is not necessary if we use detach(), but let's leave it here			
 		$('#a-back').attr('href', checkId-1);
 		$('#a-forward').detach();
 	} else if(checkId==smallest){
+		addNavButtons();
+		$('#document-container, .nav-tabs').fadeIn(300);
+		activateNavButtons();
+		
 		$('#a-forward').attr('href', checkId+1); 
-		$('#a-back').attr('onclick', "return false"); //This is not necessary if we use detach(), but let's leave it here			
 		$('#a-back').detach();
-
 	} else{
+		addNavButtons();
+		$('#document-container, .nav-tabs').fadeIn(300);
+		activateNavButtons();
+		
 
 		for(var i=0; i<checkCount; i++){
 

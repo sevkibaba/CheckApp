@@ -11,44 +11,11 @@ Reports
 - new check button and closed button should be visible after 
 - change the row system on check page
 - change the order table styling- round the corners and remove the cell borders
+- tkae sql code from heidi
 
 
 
 
-
-
-
-
-
-
-// var barChartData = {
-//   labels: ['dailyLabel', "gg"],
-//   datasets: [{
-//     fillColor: "rgba(0,60,100,1)",
-//     strokeColor: "black",
-//     data: [3, 5],
-//   }]
-// };
-
-// var ctx = document.getElementById("canvas").getContext("2d");
-// var barChartDemo = new Chart(ctx, {
-//   type : 'bar',
-//   data: barChartData,
-
-// });
-
-
-
-
-
-// .Bar(barChartData, {
-//   responsive: true,
-//   barValueSpacing: 2
-// });
-
-// var dData = function() {
-//   return Math.round(Math.random() * 90) + 10
-// };
 
 // var index = 11;
 // setInterval(function() {
@@ -57,3 +24,13 @@ Reports
 //   index++;
 // }, 3000);
 			
+
+Digital ocean
+I added the htaccess nginx version to the file
+https://winginx.com/en/htaccess
+
+
+
+
+Grant all mysq query.
+

@@ -95,6 +95,7 @@ function drawDailyChart(dailyLabel, dailyData){
             datasets: [{
                 label: '# of Votes',
                 data: dailyData,
+                options: { legend: { display: false }},
                 backgroundColor: bgColors,
                 borderColor: bdrColors,
                 borderWidth: 1

@@ -2,11 +2,11 @@
 
 {% block content %}
 
-<ul class="nav nav-tabs">
+<ul class="nav nav-tabs" style="display:none">
    <li class="active"><a data-toggle="tab" href="#home">Current Check</a></li>
    <li><a data-toggle="tab" href="#menu1">Checks Table</a></li>
 </ul>
-	
+<!-- Special div --><div id='document-container' style="display:none">
 <div class="tab-content">
    <div id="home" class="tab-pane fade in active">
      	<div class = "row" id='first-row'>
@@ -105,6 +105,8 @@
 	   </div>
 	</div>
 </div>
+<!-- Special div --></div>	
+
 <script src="/js/check.js"></script>
 <script src="/js/checkdatatable.js"></script>
 <script src="/js/checknavigationarrows.js"></script>

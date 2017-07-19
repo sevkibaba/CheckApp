@@ -62,3 +62,54 @@ PHP Admin:
     updated_at
     
     
+SQL For Tables
+
+CREATE DATABASE checkapp DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+
+
+CREATE TABLE `checks` (
+ `user_id` int(11) NOT NULL,
+ `id` int(11) NOT NULL AUTO_INCREMENT,
+ `name` varchar(255) COLLATE latin1_spanish_ci NOT NULL,
+ `total` float NOT NULL,
+ `total_paid` float NOT NULL,
+ `total_remaining` float NOT NULL,
+ `closed` tinyint(1) NOT NULL,
+ `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+ `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+ PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=244 DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci
+
+CREATE TABLE `orders` (
+ `user_id` int(11) NOT NULL,
+ `check_id` int(11) NOT NULL,
+ `check_name` varchar(255) COLLATE latin1_spanish_ci NOT NULL,
+ `id` int(11) NOT NULL AUTO_INCREMENT,
+ `product_id` int(11) NOT NULL,
+ `product_name` varchar(255) COLLATE latin1_spanish_ci NOT NULL,
+ `product_price` float NOT NULL,
+ `quantity` int(11) NOT NULL,
+ `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+ `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+ PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=622 DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci ROW_FORMAT=COMPACT
+
+CREATE TABLE `users` (
+ `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+ `name` varchar(255) COLLATE latin1_spanish_ci DEFAULT NULL,
+ `email` varchar(255) COLLATE latin1_spanish_ci NOT NULL,
+ `password` varchar(255) COLLATE latin1_spanish_ci NOT NULL,
+`created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+`updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+ PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci
+
+CREATE TABLE `products` (
+ `user_id` int(11) NOT NULL,
+ `id` int(11) NOT NULL AUTO_INCREMENT,
+ `name` varchar(255) COLLATE latin1_spanish_ci NOT NULL,
+ `price` int(11) NOT NULL,
+ `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+ `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+ PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=159 DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci
