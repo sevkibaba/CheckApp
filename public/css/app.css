@@ -15,7 +15,7 @@ body {
 		font-size: 100% !important;
 	}
 	body {
-		font-size:8px;
+		font-size:11px;
 	}
 }
 
@@ -68,21 +68,13 @@ td {
 	float:left;
 }
 
-#order-container{
-	margin-left:1px!important;
-
-}
-#order-container{
-	margin-right:2px!important;
-}
-
 .page-columns{
 	float:left;
 }
 
 #container{
 	float:left;
-	width: 50%!important;
+	width: 91%!important;
 	margin-bottom: 20px;	
 }
 #new-check{
@@ -106,3 +98,13 @@ table {
 
 tr:first-child td:first-child { border-top-left-radius: 10px; }
 tr:first-child td:last-child { border-top-right-radius: 10px; }
+
+.col-md-12{
+	padding:0 0 0 0px!important;
+}
+
+#payment-type{
+	width:90px;
+	padding:2 2px!important;
+	font-size:8px;
+}

@@ -1,16 +1,15 @@
 ToDo LIST
 - Try to insert placeholder witj jquery animation
-- Update paid total on db after key down, calculate remaining total
 - Add refresh button to give ability to refresh the product selection after an error on entry
 - odeme sekli ekle
 - Remove flash messages from screen after some delay 
-- Make the check panel stay at the same place before the navigation arrows fade in
+- Inspect the SEO report for googling
+- Try font sizes with media queries
 
 Reports
 - En toplam satis grafigi
 - new check button and closed button should be visible after 
 - change the row system on check page
-- change the order table styling- round the corners and remove the cell borders
 - tkae sql code from heidi
 
 

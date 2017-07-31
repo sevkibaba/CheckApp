@@ -17,6 +17,7 @@ class Order extends Model{
 		'product_name',
 		'product_price',
 		'quantity',
+		'payment_type',
 
 	];
 

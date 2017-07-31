@@ -38,4 +38,11 @@ class OrderController extends Controller {
 
 	}
 
+	public function updatePt ($request, $response, $args){
+		$order = Order::where('id', $args['id']);
+		$order->update([
+				'payment_type' => $request->getParam('payment_type'),
+			]);
+	}
+
 }

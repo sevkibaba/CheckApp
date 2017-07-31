@@ -120,11 +120,11 @@ function showTotals(){
 function sendCheckName(){
 	// Fade in select product after focus on check name input field
 	if ($('#check-name').val()){
-			$('.panel-body').fadeIn(700);
+			$('#panel-body').fadeIn(700);
 	}else{	
 
 		$('#check-name').keydown(function(){
-			$('.panel-body').fadeIn(700);
+			$('#panel-body').fadeIn(700);
 		});
 	};	
 	//Post check name after focus out

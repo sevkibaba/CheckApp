@@ -113,3 +113,11 @@ CREATE TABLE `products` (
  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=159 DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci
+
+Home Page content
+
+This is an online app in which you can create products and hold sales and inventory information about them. This product was designed for butique coffee shops, where you don't want to spend money for softwares. You can use this app on any device with browser connected to the internet.
+
+First, add your product details on the Product section, then use Check page to enter your sales data. From the reports section you can keep track your sales and inventory data.
+
+Before all, please sign up!

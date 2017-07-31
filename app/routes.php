@@ -54,14 +54,17 @@ $app->group('', function (){
 
 
 	$this->get('/reports/daily/{date}', 'ReportController:todaysChecks'); 
+	
 	$this->get('/reports/monthly/{date}', 'ReportController:monthsChecks'); 
 
 
 	$this->get('/order/list', 'OrderController:allOrders'); 
-
+	
 	$this->get('/order/list/{id}', 'OrderController:orderList'); 
-
+	
 	$this->get('/order/{id}/delete/{checkId}', 'OrderController:deleteOrder'); 
+	
+	$this->post('/order/paymenttype/{id}', 'OrderController:updatePt'); 
 
 
 	$this->get('/auth/password/change', 'PasswordController:getChangePassword')->setName('auth.password.change');

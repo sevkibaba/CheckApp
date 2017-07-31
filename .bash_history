@@ -163,3 +163,8 @@ ls
 mysql -u root -p -h 127.0.0.1 -P 3306
 mysql -u root -p -h 127.0.0.1 -P 3306
 mysql -u root -p -h 127.0.0.1 -P 3306
+git status
+git status
+git add .
+git commit -m "Nav-Arrows had a bug, check page displayed from left to right"
+git push origin master

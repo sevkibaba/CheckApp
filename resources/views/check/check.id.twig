@@ -9,7 +9,8 @@
 <!-- Special div --><div id='document-container' style="display:none">
 <div class="tab-content">
    <div id="home" class="tab-pane fade in active">
-     	<div class = "row" id='first-row'>
+<!-- --><div class = "row" id='first-row'>
+     	
      		<div class = "col-md-12 col-md-offset-0">
      			<div class = "panel panel-default">
      				<div class = "panel-body col-md-12" id="check-name-container">
@@ -21,8 +22,9 @@
 	     			</div>
 					<input type="hidden" class="check-id" id="check-id" style="width:40px;" value= "{{ id }}">
 			</div>
-			<div class="row" id="second-row">
-   				<div class = "panel-body" style="display:none;">
+
+			<div class = "panel-default" id="panel-body" style="display:none;">
+
 						<div class='panel-body' id="addNamePrice">
 							<div class ="form-group col-md-12" id="order-container">
 								<label for = "products">Product</label>
@@ -57,29 +59,31 @@
      							<input type="text" class ="total form-control" step="0.01" id="total-remaining" name="total-remaining" value="{{ total_remaining|number_format(2) }}" readonly>
    							</div>
    						</div>
-     				</div>
-						<div class="button-container" id="closed-button-container" style="display:none;">									
-     						<span class="button-container" id="closed-button" style="diplay:none;">
-	   							<label for="closed">Closed?</label>
-	     							{% if closed == 1 %}
-	     							    {% set selected = true %}
-		     								<input type="checkbox" id="closed" name="closed" value="" {% if selected %}checked {% endif %}>
-		     							{% else %}
-		     								<input type="checkbox" id="closed" name="closed" value="" {% if selected %} unchecked {% endif %}>
-	     							{% endif %}
-	     						</span>
-						</div>
- 						
-					<table class="table table-striped" id="order-list-container">
-						<thead id="dynamic_field_header">
-						</thead>
-						<tbody id="dynamic_field">
-						</tbody>
-					</table> 			
-	     			</div>
-	     		</div>
-	     	</div>
-	   </div>
+
+			</div>
+
+			<div class="button-container" id="closed-button-container" style="display:none;">									
+					<span class="button-container" id="closed-button" style="diplay:none;">
+						<label for="closed">Closed?</label>
+							{% if closed == 1 %}
+							    {% set selected = true %}
+ 								<input type="checkbox" id="closed" name="closed" value="" {% if selected %}checked {% endif %}>
+ 							{% else %}
+ 								<input type="checkbox" id="closed" name="closed" value="" {% if selected %} unchecked {% endif %}>
+							{% endif %}
+						</span>
+			</div>
+
+			<table class="table table-striped" id="order-list-container">
+				<thead id="dynamic_field_header">
+				</thead>
+				<tbody id="dynamic_field">
+				</tbody>
+			</table>	
+<!-- --></div>
+
+	</div>
+</div>
 	   <div id="menu1" class="tab-pane fade">
 	   		<table id="table_id" class="table" cellspacing="0" width="100%">
 	   		    <thead>
@@ -103,8 +107,6 @@
 	   		    </tfoot>
 	   		</table>
 	   </div>
-	</div>
-</div>
 <!-- Special div --></div>	
 
 <script src="/js/check.js"></script>
@@ -112,6 +114,7 @@
 <script src="/js/checknavigationarrows.js"></script>
 <script src="/js/checkorderlist.js"></script>
 <script src="/js/checktotals.js"></script>
+<script src="/js/checkpaymenttype.js"></script>
 
 <script type="text/javascript">
 addNamePrice();
